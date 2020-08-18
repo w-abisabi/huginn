@@ -1,23 +1,17 @@
 import React from 'react';
-// react-bootstrap
-// import Navbar from 'react-bootstrap/Navbar';
-// import Nav from 'react-bootstrap/Nav';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-import BucketList from './BucketList';
-import MyPlaces from './MyPlaces';
-import Home from './Home';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navigation() {
   return (
     <div>
-      <h2> Navigation bar </h2>
-        <Route exact path="/"> <Home /> </Route>
-        <Route path="bucket-list"> <BucketList /> </Route>
-        <Route path="my-places"> <MyPlaces /> </Route>
+      <p>Dropdown menu </p>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/bucket-list">Bucket Lisrt</Link></li>
+        <li><Link to="/my-places">My Places</Link></li>
+      </ul>
+      <h1>Huginn</h1>
+      <li><Link to="/add">Add Country</Link></li>
     </div>
   );
 }

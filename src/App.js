@@ -1,26 +1,40 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import MyPlaces from './components/MyPlaces';
 import BucketList from './components/BucketList';
-import { BrowserRouter as Router } from 'react-router-dom';
-
 
 const App = () => (
-  <Router>
+  <BrowserRouter>
     <div>
-      <h2>Welcome to Huginn App</h2>
-      {/* <Navigation /> */}
-      <Home />
-      {/* <h1>Welcome to Huginn</h1>
-    <h2>your favourite travel list </h2>
-    <MyPlaces /> 
-    <BucketList /> 
-    <Footer />  */}
+      <nav>
+        <Navigation />
+      </nav>
+      <Route exact path="/">
+        {' '}
+        <Home />
+        {' '}
+      </Route>
+      <Route path="/bucket-list">
+        {' '}
+        <BucketList />
+        {' '}
+      </Route>
+      <Route path="/my-places">
+        {' '}
+        <MyPlaces />
+        {' '}
+      </Route>
+      <Route path="/add">
+        {' '}
+        <p>Add Component</p>
+        {' '}
+      </Route>
     </div>
-  </Router>
+  </BrowserRouter>
 );
 
 export default App;
