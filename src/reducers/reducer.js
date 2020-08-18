@@ -29,7 +29,7 @@ const placeReducer = (state = [], action) => {
 }
 
 const rootReducer = combineReducers({
-  place: placeReducer,
+  places: placeReducer,
 });
 
 export default rootReducer;

@@ -6,6 +6,7 @@ import Home from './components/Home';
 // import Footer from './components/Footer';
 import MyPlaces from './components/MyPlaces';
 import BucketList from './components/BucketList';
+import Add from './components/Add';
 
 const App = () => (
   <BrowserRouter>
@@ -30,7 +31,7 @@ const App = () => (
       </Route>
       <Route path="/add">
         {' '}
-        <p>Add Component</p>
+        <Add />
         {' '}
       </Route>
     </div>

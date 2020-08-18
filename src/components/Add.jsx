@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
+import { addPlace } from '../actions/actions';
+import { useHistory } from 'react-router-dom';
 
 const Add = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [state, setState] = useState({
-    id: uuid(),
+    id: uuidv4(),
     city: "",
-    lastName: "",
     description: "",
     title: "",
   })
@@ -20,9 +22,10 @@ const Add = () => {
       [evt.target.name]: value
     });
   }
-  const submitPlace = () => {
-    dispatch(addPlace(id, city, description, title));
-    history.push('/');
+  const submitPlace = (e) => {
+      e.preventDefault();
+    dispatch(addPlace(state.id, state.city, state.description, state.title));
+    history.push('/my-places');
   };
   
   return (

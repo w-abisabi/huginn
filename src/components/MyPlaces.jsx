@@ -10,7 +10,7 @@ const MyPlaces = () => {
       <h1>MyPlaces </h1>
       {places
         ? places.map(place => (
-          <div>
+          <div key={place.id}>
             <p>{place.city}</p>
             <p>{place.description} </p>
             <p>{place.title} </p>
