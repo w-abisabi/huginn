@@ -11,6 +11,14 @@ router.get('/', (req, res) => {
   });
 });
 
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database succesfully connected, yay!')
+})
+
 app.use('/.netlify/functions/api', router);
 
 module.exports.handler = serverless(app);
