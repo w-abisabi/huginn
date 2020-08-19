@@ -8,15 +8,17 @@ const MyPlaces = () => {
 
   useEffect(() => {
     async function wrapperFn() {
-      setPlaces(fetchData('places'));
+      setPlaces(fetchData('places').then());
     }
     wrapperFn();
   }, []);
+
   // try {
   //   setPlaces(fetchData('places'));
   // } catch (error) {
   //   console.log('There was an error:', error);
   // }
+  
   return (
     <div className="header">
       <h1>MyPlaces </h1>
