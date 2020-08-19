@@ -35,4 +35,19 @@ db.on('error', err => {
 
 app.use('/.netlify/functions/api', router);
 
+async function runCode() {
+  const place = new Place({
+    username: 'Gabriel',
+    description: 'Windmills and tulips',
+    city: 'Amsterdam',
+    title: 'Hoofdstad'
+  })
+
+  const doc = await place.save()
+  console.log(doc)
+}
+
+runCode()
+  .catch(error => { console.error(error) })
+
 module.exports.handler = serverless(app);
