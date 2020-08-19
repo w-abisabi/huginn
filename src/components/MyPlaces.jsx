@@ -31,21 +31,18 @@ class MyPlaces extends Component {
   // } catch (error) {
   //   console.log('There was an error:', error);
   // }
- 
+
   fetchData = async () => {
-    await fetch('/.netlify/functions/api/places', {
-    headers: {
-			'Content-Type': 'application/json',
-			'Accept': 'application/json'
-    }})
-      .then((res) => {
-        const data = res.data;
-        this.setState({ places: data });
-        console.log('Data is here');
-      })
-      .catch(() => {
-        alert('Error meh meh meh :( ');
-      });
+    const response = await fetch('/.netlify/functions/api/places', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+
+    const data = await response.json()
+    // this.setState({ places: data });
+    console.log('Data is here', data);
   };
 
   render() {
