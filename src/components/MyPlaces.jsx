@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useSelector } from 'react-redux';
-import fetchData from '../actions/fetch.js'
+import fetchData from '../actions/fetch'
 
 const MyPlaces = async () => {
   // const places = useSelector(state => state.places);
