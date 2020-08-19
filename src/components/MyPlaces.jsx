@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 import fetchData from '../actions/fetch'
 
-const MyPlaces = async () => {
+const MyPlaces = () => {
   // const places = useSelector(state => state.places);
-  const places = await fetchData('places');
-  console.log('Places:', places);
+  let places = [];
 
+  useEffect(() => {
+    async function wrapperFn() {
+      try {
+        places = await fetchData('places');
+      } catch (error) {
+        console.log('There was an error:', error);
+      }
+    }
+    wrapperFn();
+  }, []);
 
   return (
     <div className="header">
       <h1>MyPlaces </h1>
       {places.length
         ? places.map(place => (
-          <div key={place.username}>
+          <div key={place._id}>
             <p>{place.username}</p>
             <p>{place.city}</p>
             <p>{place.description} </p>

@@ -9,10 +9,11 @@ const router = express.Router();
 
 app.use(cors());
 
-router.get('/places', (req, res) => {
-  Place.find()
-    .then(places => res.json(places))
-    .catch(err => res.status(400).json('DB error:', err));
+router.get('/places', async (req, res) => {
+  const misteriousPlace = await Place.find()
+  res.json(misteriousPlace);
+    // .then(places => res.json(places))
+    // .catch(err => res.status(400).json('DB error:', err));
 });
 
 // router.get('/user', (req, res) => {
