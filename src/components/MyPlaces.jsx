@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 import fetchData from '../actions/fetch'
 
 const MyPlaces = () => {
   // const places = useSelector(state => state.places);
-  let places = [];
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     async function wrapperFn() {
-      try {
-        places = await fetchData('places');
-      } catch (error) {
-        console.log('There was an error:', error);
-      }
+      setPlaces(fetchData('places'));
     }
     wrapperFn();
   }, []);
-
+  // try {
+  //   setPlaces(fetchData('places'));
+  // } catch (error) {
+  //   console.log('There was an error:', error);
+  // }
   return (
     <div className="header">
       <h1>MyPlaces </h1>

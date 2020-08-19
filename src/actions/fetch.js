@@ -5,5 +5,5 @@ export default function fetchData(path) {
 			'Accept': 'application/json'
 		}
 	})
-		.then(res => res.json())
+    .then(res => res.json())
 }
