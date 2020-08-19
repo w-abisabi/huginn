@@ -1,16 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import fetchData from '../actions/fetch.js'
 
-const MyPlaces = () => {
-  const places = useSelector(state => state.places);
+const MyPlaces = async () => {
+  // const places = useSelector(state => state.places);
+  const places = await fetchData('places');
+  console.log('Places:', places);
 
 
   return (
     <div className="header">
       <h1>MyPlaces </h1>
-      {places
+      {places.length
         ? places.map(place => (
-          <div key={place.id}>
+          <div key={place.username}>
+            <p>{place.username}</p>
             <p>{place.city}</p>
             <p>{place.description} </p>
             <p>{place.title} </p>
