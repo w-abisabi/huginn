@@ -4,7 +4,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 // import Footer from './components/Footer';
-import MyMemories from './components/MyMemories';
 import BucketList from './components/BucketList';
 import Add from './components/Add';
 import Memory from './components/Memory';
