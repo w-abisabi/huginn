@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-let Place = require('../models/place.model.js');
+let Memory = require('../models/memory.model.js');
 
 const getAll = async () => {
   try {
-    let allPlaces = await Place.find();
+    let allPlaces = await Memory.find();
     return {
       statusCode: 200,
       body: JSON.stringify(allPlaces),
@@ -25,12 +25,14 @@ const createNewMemory = async (reqBody) => {
   }
 
   try{
-    const { username, description, city, title } = JSON.parse(reqBody);
-    const newMemory = new Place({
-      username,
+    const { title, description, city, country, date, photos } = JSON.parse(reqBody);
+    const newMemory = new Memory({
+      title,
       description,
       city,
-      title,
+      country,
+      date, 
+      photos
     });
     await newMemory.save();
     return {
