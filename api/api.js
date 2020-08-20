@@ -3,45 +3,60 @@ let Place = require('../models/place.model.js');
 
 exports.handler = async (event) => {
   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
-  const segments = path.split('/').filter(e => e);
+  const segments = path.split('/').filter((e) => e);
   const db = mongoose.connection;
-
+  console.log('AURA AURA:', event);
+  const reqBody = JSON.parse(event.body);
 
   const getAll = async () => {
     const uri = process.env.ATLAS_URI;
     await mongoose.connect(uri, { useNewUrlParser: true });
-    const allPlaces = await Place.find();
+    let allPlaces = await Place.find();
     db.close();
+    console.log('Gabriel wants to see', allPlaces);
+    console.log('Gabriel wants to see', JSON.stringify(allPlaces));
     return {
       statusCode: 200,
       body: JSON.stringify(allPlaces),
     };
-  }
+  };
 
-  const create = async () => {
+  const createNewMemory = async (username, description, city, title) => {
     const uri = process.env.ATLAS_URI;
     await mongoose.connect(uri, { useNewUrlParser: true });
-    const newPlace = await Place.find();
+    const newMemory = new Place({
+      username,
+      description,
+      city,
+      title,
+    });
+    await newMemory.save();
     db.close();
     return {
-      statusCode: 200,
-      body: JSON.stringify(newPlace),
+      statusCode: 201,
+      body: JSON.stringify(newMemory),
     };
-  }
+  };
 
   switch (event.httpMethod) {
     case 'GET':
       return getAll();
     case 'POST':
-      return create();
+      return createNewMemory(
+        reqBody.username,
+        reqBody.description,
+        reqBody.city,
+        reqBody.title
+      );
     default:
       return response.error({
-        message: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.',
-      })
+        message:
+          'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.',
+      });
   }
 };
 
-
+// ================LEVY GOES HERE ==================================
 // exports.handler = async event => {
 //   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
 //   const segments = path.split('/').filter(e => e);
