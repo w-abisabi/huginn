@@ -15,31 +15,10 @@ const App = () => (
       <nav>
         <Navigation />
       </nav>
-      <Route exact path="/">
-        {' '}
-        <Home />
-        {' '}
-      </Route>
-      <Route path="/bucket-list">
-        {' '}
-        <BucketList />
-        {' '}
-      </Route>
-      {/* <Route path="/my-places">
-        {' '}
-        <MyMemories />
-        {' '}
-      </Route> */}
-      <Route path="/add">
-        {' '}
-        <Add />
-        {' '}
-      </Route>
-      <Route path="/memory/:id">
-        {' '}
-        <Memory/>
-        {' '}
-      </Route>
+      <Route exact path="/"><Home /></Route>
+      <Route path="/bucket-list"><BucketList /></Route>
+      <Route path="/add"><Add /></Route>
+      <Route path="/memory/:id"><Memory/></Route>
     </div>
   </BrowserRouter>
 );
