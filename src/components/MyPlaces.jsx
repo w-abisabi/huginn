@@ -1,23 +1,17 @@
-import React, { Component } from 'react';
-// import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+// import { useEffect } from 'react-redux';
 // import fetchData from '../actions/fetch'
 
-class MyPlaces extends Component {
+const MyPlaces = () => {
   // const places = useSelector(state => state.places);
-  state = {
-    id: '',
-    city: '',
-    description: '',
-    title: '',
-    places: [],
-  };
+  const [places, setPlaces] = useState([]);
 
-  componentDidMount = () => {
-    this.fetchData();
-  };
+
+  // componentDidMount = () => {
+  //   this.fetchData();
+  // };
 
   // LAST vesion -----------------
-  // const [places, setPlaces] = useState([]);
   // useEffect(() => {
   //   async function wrapperFn() {
   //     setPlaces(fetchData('places').then());
@@ -32,7 +26,7 @@ class MyPlaces extends Component {
   //   console.log('There was an error:', error);
   // }
 
-  fetchData = async () => {
+  const fetchData = async () => {
     const response = await fetch('/.netlify/functions/api/places', {
       headers: {
         'Content-Type': 'application/json',
@@ -41,15 +35,18 @@ class MyPlaces extends Component {
     });
 
     const data = await response.json()
-    // this.setState({ places: data });
+    setPlaces(data[0]);
     console.log('Data is here', data);
   };
 
-  render() {
+  useEffect(() => {
+    fetchData();
+  });
+
     return (
       <div className="header">
         <h1>MyPlaces </h1>
-        {this.state.places}
+        {places}
         {/* {places.length ? (
           places.map((place) => (
             <div key={place._id}>
@@ -64,7 +61,6 @@ class MyPlaces extends Component {
         )} */}
       </div>
     );
-  }
 }
 
 export default MyPlaces;

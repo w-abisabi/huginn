@@ -6,26 +6,39 @@ exports.handler = async (event) => {
   const segments = path.split('/').filter(e => e);
   const db = mongoose.connection;
 
-  const uri = process.env.ATLAS_URI;
-  await mongoose.connect(uri, { useNewUrlParser: true });
-  const misteriousPlace = await Place.find();
+
+  const getAll = async () => {
+    const uri = process.env.ATLAS_URI;
+    await mongoose.connect(uri, { useNewUrlParser: true });
+    const allPlaces = await Place.find();
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(allPlaces),
+    };
+  }
+
+  const create = async () => {
+    const uri = process.env.ATLAS_URI;
+    await mongoose.connect(uri, { useNewUrlParser: true });
+    const newPlace = await Place.find();
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(newPlace),
+    };
+  }
+
   switch (event.httpMethod) {
     case 'GET':
-
-      return {
-        statusCode: 200,
-        body: JSON.stringify(misteriousPlace),
-      };
-      
+      return getAll();
+    case 'POST':
+      return create();
     default:
       return response.error({
         message: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.',
       })
-      db.close();
-
-
   }
-
 };
 
 
