@@ -7,6 +7,7 @@ import Home from './components/Home';
 import BucketList from './components/BucketList';
 import Add from './components/Add';
 import Memory from './components/Memory';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => (
   <BrowserRouter>
