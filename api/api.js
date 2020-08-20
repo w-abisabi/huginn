@@ -1,53 +1,54 @@
 const mongoose = require('mongoose');
 let Place = require('../models/place.model.js');
 
+const getAll = async () => {
+  let allPlaces = await Place.find();
+  console.log('Gabriel wants to see', allPlaces);
+  console.log('Gabriel wants to see', JSON.stringify(allPlaces));
+  return {
+    statusCode: 200,
+    body: JSON.stringify(allPlaces),
+  };
+};
+
+const createNewMemory = async (reqBody) => {
+  if (!reqBody) {
+    return {
+      statusCode: 400,
+      body: 'Incorrect body of the request'
+    }
+  }
+  const { username, description, city, title } = JSON.parse(reqBody);
+  const newMemory = new Place({
+    username,
+    description,
+    city,
+    title,
+  });
+  await newMemory.save();
+  return {
+    statusCode: 201,
+    body: JSON.stringify(newMemory),
+  };
+};
+
 exports.handler = async (event) => {
   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
   const segments = path.split('/').filter((e) => e);
+  const uri = process.env.ATLAS_URI;
+  await mongoose.connect(uri, { useNewUrlParser: true });
   const db = mongoose.connection;
-  console.log('AURA AURA:', event);
-  const reqBody = JSON.parse(event.body);
-
-  const getAll = async () => {
-    const uri = process.env.ATLAS_URI;
-    await mongoose.connect(uri, { useNewUrlParser: true });
-    let allPlaces = await Place.find();
-    db.close();
-    console.log('Gabriel wants to see', allPlaces);
-    console.log('Gabriel wants to see', JSON.stringify(allPlaces));
-    return {
-      statusCode: 200,
-      body: JSON.stringify(allPlaces),
-    };
-  };
-
-  const createNewMemory = async (username, description, city, title) => {
-    const uri = process.env.ATLAS_URI;
-    await mongoose.connect(uri, { useNewUrlParser: true });
-    const newMemory = new Place({
-      username,
-      description,
-      city,
-      title,
-    });
-    await newMemory.save();
-    db.close();
-    return {
-      statusCode: 201,
-      body: JSON.stringify(newMemory),
-    };
-  };
+  console.log('AURA AURA:', event.body);
 
   switch (event.httpMethod) {
     case 'GET':
-      return getAll();
+      const allEntries = await getAll();
+      db.close();
+      return allEntries;
     case 'POST':
-      return createNewMemory(
-        reqBody.username,
-        reqBody.description,
-        reqBody.city,
-        reqBody.title
-      );
+      const newMemory = await createNewMemory(event.body);
+      db.close();
+      return newMemory;
     default:
       return response.error({
         message:
