@@ -1,69 +1,73 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import { addPlace } from '../actions/actions';
-import { useHistory } from 'react-router-dom';
+// import { addPlace } from '../actions/actions';
+// import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Add = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
-  const [state, setState] = useState({
-    id: uuidv4(),
-    city: "",
-    description: "",
-    title: "",
-  })
+  const [newMemory, setNewMemory] = useState({
+    country: '',
+    city: '',
+    description: '',
+    title: '',
+    photos: [],
+    date: '',
+  });
 
   function handleChange(evt) {
     const value = evt.target.value;
-    setState({
-      ...state,
-      [evt.target.name]: value
+    setNewMemory({
+      ...newMemory,
+      [evt.target.name]: value,
     });
   }
-  const submitPlace = (e) => {
-      e.preventDefault();
-    dispatch(addPlace(state.id, state.city, state.description, state.title));
-    history.push('/my-places');
+  const submitMemory = async (e) => {
+    e.preventDefault();
+    //const response =
+    await fetch('/.netlify/functions/api/places', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(newMemory),
+      // httpMethod:
+      method: 'POST',
+    });
   };
-  
+
   return (
     <div>
       <h2>Add a new place </h2>
       <div>
-        <form onSubmit={submitPlace}>
+        <form onSubmit={submitMemory}>
           <label>
-          city
-            <input
-              type="text"
-              name="city"
-              value={state.city}
-              onChange={handleChange}
-            />
+            title
+            <input type="text" name="title" onChange={handleChange} />
           </label>
           <label>
-          description
-            <input
-              type="text"
-              name="description"
-              value={state.description}
-              onChange={handleChange}
-            />
+            country
+            <input type="text" name="country" onChange={handleChange} />
           </label>
           <label>
-          title
-            <input
-              type="text"
-              name="title"
-              value={state.title}
-              onChange={handleChange}
-            />
+            city
+            <input type="text" name="city" onChange={handleChange} />
           </label>
-          <button  type="submit">
-              SUBMIT
-            </button>
+          <label>
+            description
+            <input type="text" name="description" onChange={handleChange} />
+          </label>
+          <label>
+            photos
+            <input type="text" name="photos" onChange={handleChange} />
+          </label>
+          <label>
+            date
+            <input type="text" name="date" onChange={handleChange} />
+          </label>
+          <button type="submit">SUBMIT</button>
         </form>
+        <Link to={'/'}>BACK</Link>
       </div>
     </div>
   );
