@@ -7,11 +7,9 @@ const placeSchema = new Schema({
   description: { type: String, required: true },
   city: { type: String, required: true },
   title: { type: String, required: true },
+}, {
+  timestamps: true,
 });
-
-// , {
-//   // timestamps: true,
-// }
 
 const Place = mongoose.model('Place', placeSchema);
 

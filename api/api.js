@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 let Place = require('../models/place.model.js');
 
 const getAll = async () => {
-  let allPlaces = await Place.find();
-  console.log('Gabriel wants to see', allPlaces);
-  console.log('Gabriel wants to see', JSON.stringify(allPlaces));
-  return {
-    statusCode: 200,
-    body: JSON.stringify(allPlaces),
-  };
+  try {
+    let allPlaces = await Place.find();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(allPlaces),
+    };
+  } catch(err) {
+    return {
+      statusCode: 404,
+      body: 'Invalid endpoint, try again'
+    }
+  }
 };
 
 const createNewMemory = async (reqBody) => {
@@ -18,18 +23,27 @@ const createNewMemory = async (reqBody) => {
       body: 'Incorrect body of the request'
     }
   }
-  const { username, description, city, title } = JSON.parse(reqBody);
-  const newMemory = new Place({
-    username,
-    description,
-    city,
-    title,
-  });
-  await newMemory.save();
-  return {
-    statusCode: 201,
-    body: JSON.stringify(newMemory),
-  };
+
+  try{
+    const { username, description, city, title } = JSON.parse(reqBody);
+    const newMemory = new Place({
+      username,
+      description,
+      city,
+      title,
+    });
+    await newMemory.save();
+    return {
+      statusCode: 201,
+      body: JSON.stringify(newMemory),
+    };
+  } catch (err) {
+    return {
+      statusCode: 503,
+      body: 'Could not create a database entry, please try again'
+    }
+  }
+
 };
 
 exports.handler = async (event) => {
@@ -38,7 +52,6 @@ exports.handler = async (event) => {
   const uri = process.env.ATLAS_URI;
   await mongoose.connect(uri, { useNewUrlParser: true });
   const db = mongoose.connection;
-  console.log('AURA AURA:', event.body);
 
   switch (event.httpMethod) {
     case 'GET':
