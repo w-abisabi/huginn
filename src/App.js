@@ -4,9 +4,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 // import Footer from './components/Footer';
-import MyPlaces from './components/MyPlaces';
+import MyMemories from './components/MyMemories';
 import BucketList from './components/BucketList';
 import Add from './components/Add';
+import Memory from './components/Memory';
 
 const App = () => (
   <BrowserRouter>
@@ -24,14 +25,19 @@ const App = () => (
         <BucketList />
         {' '}
       </Route>
-      <Route path="/my-places">
+      {/* <Route path="/my-places">
         {' '}
-        <MyPlaces />
+        <MyMemories />
         {' '}
-      </Route>
+      </Route> */}
       <Route path="/add">
         {' '}
         <Add />
+        {' '}
+      </Route>
+      <Route path="/memory/:id">
+        {' '}
+        <Memory/>
         {' '}
       </Route>
     </div>
