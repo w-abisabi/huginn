@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { useEffect } from 'react-redux';
-// import fetchData from '../actions/fetch'
 
 const MyMemories = () => {
   const [memories, setMemories] = useState([]);

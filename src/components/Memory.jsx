@@ -5,20 +5,20 @@ function Memory(props) {
   const [memory, setMemory] = useState({});
   const id = props.match.params.id;
 
-  const fetchData = async () => {
-    const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-
-    const data = await response.json();
-    console.log('Data is here', data);
-    setMemory(data);
-  };
-
+  
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
+  
+      const data = await response.json();
+      console.log('Data is here', data);
+      setMemory(data);
+    };
     fetchData();
   }, []);
 
@@ -31,15 +31,11 @@ function Memory(props) {
         <img
             className="artist-img-big"
             src={memory.photos}
-            alt="photo from memory" />
+            alt="my memory" />
         </div>
         <hr/>
-       
         <h3>{memory.city}</h3>
         <p>{memory.description}</p>
-       
-        
-
         <Link className="back-btn" to={'/'}>
           <i className="fas fa-arrow-left"></i> BACK
         </Link>
