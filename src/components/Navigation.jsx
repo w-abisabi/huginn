@@ -7,10 +7,8 @@ function Navigation() {
   return (
     <div>
       <Navbar className="wabi-custom-nav" expand="lg" variant="dark">
-        <Navbar.Brand href="/">Huginn</Navbar.Brand>
-        <Link to="/add">
-          <i className="fas fa-plus"></i>
-        </Link>
+        
+        
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -19,7 +17,12 @@ function Navigation() {
             <Nav.Link href="/add">ADD</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>
+          
         </Navbar.Collapse>
+        <Navbar.Brand href="/">Huginn</Navbar.Brand>
+        <Link className="btn-plus" to="/add">
+          <i className="fas fa-plus"></i>
+        </Link>
       </Navbar>
     </div>
   );

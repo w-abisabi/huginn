@@ -7,7 +7,7 @@ const Home = () => (
   
      <div className="huginn-logo"> </div>
    </div>
-    <h2 className="welcome">Welcome to Huginn Levy! </h2>
+    <h2 className="welcome">Welcome to Huginn, Levy! </h2>
     
     <p>"He sends them out in the morning to fly around the whole world, and by breakfast they are back again." </p>
 

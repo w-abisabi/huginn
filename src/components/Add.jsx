@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 // import { addPlace } from '../actions/actions';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 
 const Add = () => {
-  // const history = useHistory();
+  const history = useHistory();
 
   const [newMemory, setNewMemory] = useState({
     country: '',
@@ -36,6 +36,7 @@ const Add = () => {
       // httpMethod:
       method: 'POST',
     });
+    history.push('/');
   };
 
   return (

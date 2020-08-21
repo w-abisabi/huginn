@@ -67,11 +67,46 @@
   width: 100%;
   margin: 10px;
 }
+.button_mem {
+  background-color: darkcyan;
+  padding: 10px;
+  border-bottom: solid 2px rgb(177, 177, 177);
+}
 
 .memory-link {
+  color: white;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 900;
   text-decoration: none;
+}
+
+.memory {
+  padding: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.date {
+  color: lightslategray;
+  font-size: 10px;
+}
+
+.memory-ttl {
+  padding: 10px;
+  font-weight: 300;
+  color: cornflowerblue;
+}
+
+.btn-plus {
+  color: white;
+  font-size: 25px;
+}
+
+.artist-img-big {
+  border-radius: 0 25px 0 25px;
+  margin: 0 15px 0 0;
+  object-fit: cover;
+  width: 280px;
+  height: auto;
 }
 
 
