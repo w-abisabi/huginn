@@ -20,7 +20,7 @@ function Memory(props) {
       setMemory(data);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <div>
