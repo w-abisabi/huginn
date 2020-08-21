@@ -24,6 +24,8 @@ const createNewMemory = async (reqBody) => {
     }
   }
 
+  // comment
+
   try{
     const { title, description, city, country, date, photos } = JSON.parse(reqBody);
     const newMemory = new Memory({
