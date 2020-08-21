@@ -5,7 +5,7 @@ const MyMemories = () => {
   const [memories, setMemories] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch('/.netlify/functions/api/places', {
+    const response = await fetch('/.netlify/functions/api/memories', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -13,7 +13,6 @@ const MyMemories = () => {
     });
 
     const data = await response.json()
-    console.log('Data is here', data);
     setMemories(data);
   };
 

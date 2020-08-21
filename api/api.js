@@ -39,8 +39,6 @@ const createNewMemory = async (reqBody) => {
     }
   }
 
-  // comment
-
   try {
     const { title, description, city, country, date, photos } = JSON.parse(reqBody);
     const newMemory = new Memory({
@@ -91,10 +89,10 @@ exports.handler = async (event) => {
       db.close();
       return newMemory;
     default:
-      return response.error({
-        message:
-          'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.',
-      });
+      return {
+        statusCode: 503,
+        body: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.'
+      };
   }
 };
 
