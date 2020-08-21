@@ -25,11 +25,14 @@ const MyMemories = () => {
 
     return (
       <div className="my-memories">
-        <h1>My Memories </h1>
+        <h2 className="my-memories">My Memories </h2>
+        <hr/>
         {memories.length 
         ? memories.map(memory => (
-            <div key={memory._id}>
-              <Link to={`/memory/${memory._id}`}>{memory.city}</Link>
+
+
+            <div className="button_cont" align="center" key={memory._id}>
+              <Link className="memory-link" to={`/memory/${memory._id}`}><a class="example_f" href="add-website-here" target="_blank" rel="nofollow">{memory.city}</a></Link>
             </div>
           )) : <p>You don't have any memories yet.</p>}
       </div>
