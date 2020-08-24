@@ -60,7 +60,54 @@ const createNewMemory = async (reqBody) => {
       body: 'Could not create a database entry, please try again'
     }
   }
+};
 
+const updateMemory = async (id, reqBody) => {
+  if (!reqBody) {
+    return {
+      statusCode: 400,
+      body: 'Incorrect body of the request'
+    }
+  }
+  try {
+    const { title, description, city, country, date, photos } = JSON.parse(reqBody);
+    const updatedMemory = await Memory.updateOne({ _id: id }, {
+      title,
+      description,
+      city,
+      country,
+      date,
+      photos
+    }
+    );
+    // await updatedMemory.save();
+    return {
+      // never gets this response, even if the memory did update????
+      statusCode: 200,
+      body: 'Memory updated succesfully'
+    };
+  } catch (err) {
+    console.log('PATRYK:', err);
+    return {
+      statusCode: 503,
+      body: JSON.stringify(err)
+    }
+  }
+};
+
+const deleteMemory = async (id) => {
+  try {
+    await Memory.deleteOne({ _id: id });
+    return {
+      statusCode: 200,
+      body: 'Memory deleteted succesfully',
+    };
+  } catch (err) {
+    return {
+      statusCode: 404,
+      body: 'Memory not found'
+    }
+  }
 };
 
 exports.handler = async (event) => {
@@ -72,22 +119,42 @@ exports.handler = async (event) => {
 
   switch (event.httpMethod) {
     case 'GET':
-      let response = {
+      let getResponse = {
         statusCode: 400,
         body: 'Invalid endpoint'
       }
       if (segments.length === 2) {
-        response = await getJustOne(segments[1]);
+        getResponse = await getJustOne(segments[1]);
       }
       if (segments.length === 1) {
-        response = await getAll();
+        getResponse = await getAll();
       }
       db.close();
-      return response;
+      return getResponse;
     case 'POST':
       const newMemory = await createNewMemory(event.body);
       db.close();
       return newMemory;
+    case 'PUT':
+      let putResponse = {
+        statusCode: 400,
+        body: 'Invalid endpoint'
+      }
+      if (segments.length === 2) {
+        putResponse = await updateMemory(segments[1], event.body);
+      }
+      db.close();
+      return putResponse;
+    case 'DELETE':
+      let deleteResponse = {
+        statusCode: 400,
+        body: 'Invalid endpoint'
+      }
+      if (segments.length === 2) {
+        deleteResponse = await deleteMemory(segments[1]);
+      }
+      db.close();
+      return deleteResponse;
     default:
       return {
         statusCode: 503,
