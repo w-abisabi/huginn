@@ -1,7 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+
 .wabi-custom-nav {
   height: 80px;
   background-color: darkcyan;
   border-radius: 0;
   color: aliceblue;
   flex-direction: row;
+}
+
+.my-memories {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  color: rgb(93, 93, 93);
+}
+
+.welcome {
+  font-family: 'Josefin Sans', sans-serif;
+  color: darkcyan;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  margin: 15px;
+}
+
+.home-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.welcome+p{
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: italic;
+  color: darkcyan;
+  font-weight: 100;
+  margin: 15px;
+}
+
+#header{
+  width:100%; 
+  background: url("./static/map.png");
+  background-position: center;
+  
+  background-size: cover;
+}
+
+.huginn-logo {
+  height: 25px;
+  width: 25px;
+  margin: 10px;
+  background: url("./static/huginn-log.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#headerContent{
+  margin: 0 auto; width: 960px;
+}
+
+.map {
+  
+  
+  height: 200px;
+  width: 100%;
+  margin: 10px;
+}
+.button_mem {
+  background-color: darkcyan;
+  padding: 10px;
+  border-bottom: solid 2px rgb(177, 177, 177);
+}
+
+.memory-link {
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.memory {
+  padding: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.date {
+  color: lightslategray;
+  font-size: 10px;
+}
+
+.memory-ttl {
+  padding: 10px;
+  font-weight: 300;
+  color: cornflowerblue;
+}
+
+.btn-plus {
+  color: white;
+  font-size: 25px;
+}
+
+.artist-img-big {
+  border-radius: 0 25px 0 25px;
+  margin: 0 15px 0 0;
+  object-fit: cover;
+  width: 280px;
+  height: auto;
+}
+
+
+/* --------------------------- */
+.button_cont {
+  margin: 40px;
+}
+.example_f {
+  border-radius: 4px;
+  background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 5px;
+}
+.example_f span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+.example_f span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.example_f:hover span {
+  padding-right: 25px;
+}
+.example_f:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.form-add {
+  margin: 25px;
+}
+
+.back-btn {
+  color: darkcyan;
 }

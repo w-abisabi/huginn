@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Memory = () => (
-	<div className="memory">
-		<p>Memory!!</p>
-		{/* <p>{username}</p>
-		<p>{city}</p>
-		<p>{description}</p>
-		<p>{title}</p> */}
-		<li><Link to="/">Back</Link></li>
-	</div>
-);
+function Memory(props) {
+  const [memory, setMemory] = useState({});
+  const id = props.match.params.id;
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
+  
+      const data = await response.json();
+      console.log('Data is here', data);
+      setMemory(data);
+    };
+    fetchData();
+  }, [id]);
+
+  return (
+    <div>
+      <div className="memory">
+      <p className="date">{memory.date}</p>
+        <h2 className="memory-ttl">{memory.title}</h2>
+        <div>
+        <img
+            className="artist-img-big"
+            src={memory.photos}
+            alt="my memory" />
+        </div>
+        <hr/>
+        <h3>{memory.city}</h3>
+        <p>{memory.description}</p>
+        <Link className="back-btn" to={'/'}>
+          <i className="fas fa-arrow-left"></i> BACK
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default Memory;

@@ -8,10 +8,25 @@ const getAll = async () => {
       statusCode: 200,
       body: JSON.stringify(allPlaces),
     };
-  } catch(err) {
+  } catch (err) {
     return {
       statusCode: 404,
       body: 'Invalid endpoint, try again'
+    }
+  }
+};
+
+const getJustOne = async (id) => {
+  try {
+    const memoryById = await Memory.findById(id);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(memoryById),
+    };
+  } catch (err) {
+    return {
+      statusCode: 404,
+      body: 'Not found in our database'
     }
   }
 };
@@ -24,14 +39,14 @@ const createNewMemory = async (reqBody) => {
     }
   }
 
-  try{
+  try {
     const { title, description, city, country, date, photos } = JSON.parse(reqBody);
     const newMemory = new Memory({
       title,
       description,
       city,
       country,
-      date, 
+      date,
       photos
     });
     await newMemory.save();
@@ -57,18 +72,27 @@ exports.handler = async (event) => {
 
   switch (event.httpMethod) {
     case 'GET':
-      const allEntries = await getAll();
+      let response = {
+        statusCode: 400,
+        body: 'Invalid endpoint'
+      }
+      if (segments.length === 2) {
+        response = await getJustOne(segments[1]);
+      }
+      if (segments.length === 1) {
+        response = await getAll();
+      }
       db.close();
-      return allEntries;
+      return response;
     case 'POST':
       const newMemory = await createNewMemory(event.body);
       db.close();
       return newMemory;
     default:
-      return response.error({
-        message:
-          'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.',
-      });
+      return {
+        statusCode: 503,
+        body: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.'
+      };
   }
 };
 
