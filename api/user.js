@@ -1,8 +1,8 @@
-import cookie from "cookie";
-import { publicKey } from "./publickey";
-import jwt from "jsonwebtoken";
+const { cookie } = require("cookie");
+const { publicKey } = require("./publickey");
+const { jwt } = require("jsonwebtoken");
 
-export async function handler(event) {
+exports.handler = async (event) => {
   const cookies = event.headers.cookie && cookie.parse(event.headers.cookie);
 
   if (!cookies || !cookies.jwt) {
