@@ -16,7 +16,7 @@ const getAll = async () => {
   } catch (err) {
     db.close();
     return {
-      statusCode: err.statusCode,
+      statusCode: 400,
       body: JSON.stringify(err),
     }
   }
@@ -32,10 +32,11 @@ const getJustOne = async (id) => {
       body: JSON.stringify(memoryById),
     };
   } catch (err) {
+    console.log('PATRYK>>', err, '<<<');
     db.close();
     return {
       statusCode: 404,
-      body: 'Not found in our database'
+      body: JSON.stringify(err)
     }
   }
 };
