@@ -10,7 +10,7 @@ function Form(props) {
 
     setLoading(true);
     try {
-      await props.onSubmit(input);
+      await props.onSubmit(input);  
     } finally {
       setLoading(false);
     }
