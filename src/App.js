@@ -8,8 +8,15 @@ import BucketList from './components/BucketList';
 import Add from './components/Add';
 import Memory from './components/Memory';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// authentication 
+import { UnauthenticatedApp } from "./UnauthenticatedApp"
+import { useAuth } from "./providers/auth-provider"
 
-const App = () => (
+
+
+const App = () => {
+  const { user } = useAuth()
+  return user ? 
   <BrowserRouter>
     <div>
       <nav>
@@ -20,7 +27,7 @@ const App = () => (
       <Route path="/add"><Add /></Route>
       <Route path="/memory/:id"><Memory/></Route>
     </div>
-  </BrowserRouter>
-);
+  </BrowserRouter> : <UnauthenticatedApp />
+};
 
 export default App;
