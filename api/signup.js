@@ -1,8 +1,8 @@
-import bcrypt from "bcryptjs";
-import { createClient } from "../helpers/db-helper";
-import { createJwtCookie } from "../helpers/jwt-helper";
+const bcrypt = require("bcryptjs");
+const { createClient } = require("../src/helpers/db-helper");
+const { createJwtCookie } = require("../src/helpers/jwt-helper");
 
-export async function handler(event) {
+exports.handler = async (event) => {
   const dbClient = createClient();
   let errorStatusCode = 500;
 

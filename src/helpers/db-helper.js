@@ -1,6 +1,6 @@
-import { MongoClient } from "mongodb"
+const { MongoClient } = require("mongodb");
 
-const dbName = "jwt-authentication-example"
+const dbName = "jwt-authentication-example";
 
 function createClient() {
   const client = new MongoClient(
@@ -19,4 +19,4 @@ function createClient() {
   return client
 }
 
-export { createClient }
+exports.createClient = createClient;

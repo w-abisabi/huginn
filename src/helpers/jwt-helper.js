@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import cookie from "cookie";
+const jwt = require("jsonwebtoken");
+const cookie = require ("cookie");
 
 function createJwtCookie(userId, email) {
   const secretKey =
@@ -25,4 +25,5 @@ function clearCookie() {
   return "jwt=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 }
 
-export { createJwtCookie, clearCookie };
+exports.createJwtCookie = createJwtCookie;
+exports.clearCookie = clearCookie;

@@ -9,8 +9,8 @@ import Add from './components/Add';
 import Memory from './components/Memory';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // authentication 
-import { UnauthenticatedApp } from "./UnauthenticatedApp"
-import { useAuth } from "./providers/auth-provider"
+import { UnauthenticatedApp } from "./components/UnauthenticatedApp";
+import { useAuth } from "./providers/auth-provider";
 
 
 
