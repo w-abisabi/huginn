@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import DropdownCountries from './DropdownCountries';
 
 const AddNewMemory = () => {
   const history = useHistory();
@@ -53,13 +54,7 @@ const AddNewMemory = () => {
             />
           </Form.Group>
           <Form.Group controlId="country">
-            <Form.Label>country</Form.Label>
-            <Form.Control
-              placeholder="country"
-              type="text"
-              name="country"
-              onChange={handleChange}
-            />
+            <DropdownCountries onSelectCountry={handleChange} />
           </Form.Group>
           <Form.Group controlId="city">
             <Form.Label>city</Form.Label>

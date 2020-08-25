@@ -3,8 +3,6 @@ import React from 'react';
 function DropdownCountries( props ) {
 
   const handleChange = (e) => {
-    // const selectedCountry = e.target.value;
-    // console.log('country here', selectedCountry);
     props.onSelectCountry(e);
   }
 
