@@ -10,7 +10,7 @@ function Navigation() {
         
         
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav">Í
           <Nav className="mr-auto">
             <Nav.Link href="#home">My Memories</Nav.Link>
             <Nav.Link href="/">Home</Nav.Link>
@@ -20,7 +20,7 @@ function Navigation() {
           
         </Navbar.Collapse> */}
         <Navbar.Brand href="/">Huginn</Navbar.Brand>
-        <Link className="btn-plus" to="/add">
+        <Link className="btn-plus" to="/new">
           <i className="fas fa-plus"></i>
         </Link>
       </Navbar>

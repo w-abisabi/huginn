@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const Add = () => {
+const AddNewMemory = () => {
   const history = useHistory();
 
   const [newMemory, setNewMemory] = useState({
@@ -26,7 +26,7 @@ const Add = () => {
   }
   const submitMemory = async (e) => {
     e.preventDefault();
-    await fetch('/.netlify/functions/api/places', {
+    await fetch('/.netlify/functions/api/memories', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -109,4 +109,4 @@ const Add = () => {
     </div>
   );
 };
-export default Add;
+export default AddNewMemory;
