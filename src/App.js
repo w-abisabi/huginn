@@ -21,6 +21,7 @@ const App = () => {
         <nav>
           <Navigation />
         </nav>
+        <div className="filler"></div>
         <Switch>
           <Route path="/login">
             <Redirect to="/" />
