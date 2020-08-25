@@ -15,11 +15,6 @@ exports.handler = async (event) => {
   }
 
   try {
-    // verify throws an error if it can't verify the jwt.
-    // By default it also checks the exp claim, which is
-    // where our expiry information is.
-    // If the token is successfully verified,
-    // it returns the payload.
     const payload = jwt.verify(cookies.jwt, publicKey);
     return {
       statusCode: 200,

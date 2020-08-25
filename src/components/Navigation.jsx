@@ -20,7 +20,7 @@ function Navigation() {
 
   return (
     <header>
-      <Link to="/add" className="add-btn">
+      <Link to="/new" className="add-btn">
         <i className="fas fa-plus"></i>
       </Link>
       <Link to="/" className="logo">
@@ -44,7 +44,7 @@ function Navigation() {
             </Link>
           </li>
           <li>
-            <Link className="a-link" to="/add">
+            <Link className="a-link" to="/new">
               add
             </Link>
           </li>

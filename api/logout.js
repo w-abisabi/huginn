@@ -1,6 +1,6 @@
-import { clearCookie } from "../src/helpers/jwt-helper";
+const { clearCookie } =  require("../src/helpers/jwt-helper");
 
-export async function handler() {
+exports.handler = async () => {
   return {
     statusCode: 200,
     headers: {
