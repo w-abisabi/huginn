@@ -1,165 +1,63 @@
-const mongoose = require('mongoose');
-let Memory = require('../models/memory.model.js');
-
-const getAll = async () => {
-  try {
-    let allPlaces = await Memory.find();
-    return {
-      statusCode: 200,
-      body: JSON.stringify(allPlaces),
-    };
-  } catch (err) {
-    return {
-      statusCode: 404,
-      body: 'Invalid endpoint, try again'
-    }
-  }
-};
-
-const getJustOne = async (id) => {
-  try {
-    const memoryById = await Memory.findById(id);
-    return {
-      statusCode: 200,
-      body: JSON.stringify(memoryById),
-    };
-  } catch (err) {
-    return {
-      statusCode: 404,
-      body: 'Not found in our database'
-    }
-  }
-};
-
-const createNewMemory = async (reqBody) => {
-  if (!reqBody) {
-    return {
-      statusCode: 400,
-      body: 'Incorrect body of the request'
-    }
-  }
-
-  try {
-    const { title, description, city, country, date, photos } = JSON.parse(reqBody);
-    const newMemory = new Memory({
-      title,
-      description,
-      city,
-      country,
-      date,
-      photos
-    });
-    await newMemory.save();
-    return {
-      statusCode: 201,
-      body: JSON.stringify(newMemory),
-    };
-  } catch (err) {
-    return {
-      statusCode: 503,
-      body: 'Could not create a database entry, please try again'
-    }
-  }
-};
-
-const updateMemory = async (id, reqBody) => {
-  if (!reqBody) {
-    return {
-      statusCode: 400,
-      body: 'Incorrect body of the request'
-    }
-  }
-  try {
-    const { title, description, city, country, date, photos } = JSON.parse(reqBody);
-    const updatedMemory = await Memory.updateOne({ _id: id }, {
-      title,
-      description,
-      city,
-      country,
-      date,
-      photos
-    }
-    );
-    // await updatedMemory.save();
-    return {
-      // never gets this response, even if the memory did update????
-      statusCode: 200,
-      body: 'Memory updated succesfully'
-    };
-  } catch (err) {
-    console.log('PATRYK:', err);
-    return {
-      statusCode: 503,
-      body: JSON.stringify(err)
-    }
-  }
-};
-
-const deleteMemory = async (id) => {
-  try {
-    await Memory.deleteOne({ _id: id });
-    return {
-      statusCode: 200,
-      body: 'Memory deleteted succesfully',
-    };
-  } catch (err) {
-    return {
-      statusCode: 404,
-      body: 'Memory not found'
-    }
-  }
-};
+const api = require('./apiCrudFunctions.js');
 
 exports.handler = async (event) => {
   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
   const segments = path.split('/').filter((e) => e);
-  const uri = process.env.ATLAS_URI;
-  await mongoose.connect(uri, { useNewUrlParser: true });
-  const db = mongoose.connection;
+  
+  if (!segments.length) {
+    return {
+      statusCode: 200,
+      body: "Welcome to Huggin's backend. Powered by Netlify Lambda functions.",
+    }
+  }
 
-  switch (event.httpMethod) {
-    case 'GET':
-      let getResponse = {
-        statusCode: 400,
-        body: 'Invalid endpoint'
-      }
-      if (segments.length === 2) {
-        getResponse = await getJustOne(segments[1]);
-      }
-      if (segments.length === 1) {
-        getResponse = await getAll();
-      }
-      db.close();
-      return getResponse;
-    case 'POST':
-      const newMemory = await createNewMemory(event.body);
-      db.close();
-      return newMemory;
-    case 'PUT':
-      let putResponse = {
-        statusCode: 400,
-        body: 'Invalid endpoint'
-      }
-      if (segments.length === 2) {
-        putResponse = await updateMemory(segments[1], event.body);
-      }
-      db.close();
-      return putResponse;
-    case 'DELETE':
-      let deleteResponse = {
-        statusCode: 400,
-        body: 'Invalid endpoint'
-      }
-      if (segments.length === 2) {
-        deleteResponse = await deleteMemory(segments[1]);
-      }
-      db.close();
-      return deleteResponse;
-    default:
-      return {
-        statusCode: 503,
-        body: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.'
-      };
+  if (segments[0] === 'memories') {
+    switch (event.httpMethod) {
+      case 'GET':
+        if (segments.length === 1) {
+          const allMemories = await api.getAll();
+          return allMemories
+        }
+        if (segments.length === 2) {
+          const oneMemory = await api.getJustOne(segments[1]);
+          return oneMemory;
+        }
+        return {
+          statusCode: 400,
+          body: 'Invalid endpoint'
+        };
+      case 'POST':
+        const newMemory = await api.createNewMemory(event.body);
+        return newMemory;
+      case 'PUT':
+        let putResponse = {
+          statusCode: 400,
+          body: 'Invalid endpoint'
+        }
+        if (segments.length === 2) {
+          putResponse = await api.updateMemory(segments[1], event.body);
+        }
+        return putResponse;
+      case 'DELETE':
+        let deleteResponse = {
+          statusCode: 400,
+          body: 'Invalid endpoint'
+        }
+        if (segments.length === 2) {
+          deleteResponse = await api.deleteMemory(segments[1]);
+        }
+        return deleteResponse;
+      default:
+        return {
+          statusCode: 503,
+          body: 'Unrecognized HTTP Method, must be one of `GET/POST/PUT/DELETE/OPTIONS`.'
+        };
+    }
+  }
+
+  return {
+    statusCode: 404,
+    body: 'Not found'
   }
 };
 
