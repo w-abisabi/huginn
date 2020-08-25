@@ -83,7 +83,7 @@ const AddNewMemory = () => {
             <Form.Label>photos</Form.Label>
             <Form.Control
               placeholder="photos"
-              type="text"
+              url="text"
               name="photos"
               onChange={handleChange}
             />
@@ -91,8 +91,7 @@ const AddNewMemory = () => {
           <Form.Group controlId="date">
             <Form.Label>date</Form.Label>
             <Form.Control
-              placeholder="date"
-              type="text"
+              type="date"
               name="date"
               onChange={handleChange}
             />

@@ -39,13 +39,13 @@ function Memory(props) {
         {memory
           ? (
             <div>
-              <p className="date">{memory.date}</p>
               <Link className="edit-btn" to={'/'} onClick={deleteMemory}>
-              <i className="fas fa-trash"></i> DELETE
+                <i className="fas fa-trash"></i> DELETE 
               </Link>
               <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
-              <i className="fas fa-edit"></i> EDIT
+                <i className="fas fa-edit"></i> EDIT 
               </Link>
+              <p className="date">{memory.date}</p>
               <h2 className="memory-ttl">{memory.title}</h2>
               <div>
                 {memory.photos.map(photo => (
@@ -57,7 +57,7 @@ function Memory(props) {
                 ))}
               </div>
               <hr />
-              <h3>{memory.city}</h3>
+              <h3>{memory.city}, {memory.country}</h3>
               <p>{memory.description}</p>
             </div>
           )
