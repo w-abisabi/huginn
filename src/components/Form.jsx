@@ -19,12 +19,14 @@ function Form(props) {
   return (
     <>
       <h3>{props.title}</h3>
-      <form onSubmit={onSubmit}>
+      <hr/>
+      <form className="form-wrapper"  onSubmit={onSubmit}>
         <fieldset disabled={loading} aria-busy={loading}>
+        
           {props.inputs.map(i => (
             <label key={i.name}>
               {i.name}
-              <input
+              <input className="input-higinn" 
                 value={input[i.name] || ""}
                 type={i.type}
                 onChange={e => {
@@ -34,7 +36,7 @@ function Form(props) {
               />
             </label>
           ))}
-          <input type="submit" value={`Submit${loading ? "ting" : ""}`} />
+          <input className="submit-btn" type="submit" value={`Submit${loading ? "ting" : ""}`} />
         </fieldset>
       </form>
     </>

@@ -1,5 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/*--- LOGIN PAGE ---*/
+.form-wrapper {
+  background-color: rgb(235, 253, 253);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.page-container {
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 10px;
+  color: darkgrey; 
+}
+
+.input-higinn {
+  border: 1px solid darkcyan;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.submit-btn {
+  color: darkcyan;
+  border: none;
+  background: none;
+  text-transform: uppercase; 
+}
+
+.submit-btn:hover {
+  color: rgb(6, 66, 66);
+}
+
+
+/*--- LOGIN PAGE ---*/
+
 .wabi-custom-nav {
   height: 80px;
   background-color: darkcyan;

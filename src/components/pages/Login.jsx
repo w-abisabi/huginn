@@ -18,8 +18,8 @@ function Login() {
   ];
 
   return (
-    <div>
-      <Form title="Login" onSubmit={login} inputs={inputs} />
+    <div className="page-container">
+      <Form className="form-control" title="Login" onSubmit={login} inputs={inputs} />
       <p>
         Don't have an account? <Link to="/signup">Sign up here</Link>
       </p>

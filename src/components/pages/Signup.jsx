@@ -18,7 +18,7 @@ function Signup() {
   ];
 
   return (
-    <div>
+    <div className="page-container">
       <Form title="Signup" onSubmit={signup} inputs={inputs} />
       <p>
         Already have an account? <Link to="/login">Log in here</Link>
