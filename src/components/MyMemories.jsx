@@ -30,7 +30,7 @@ const MyMemories = () => {
 
 
             <div className="button_mem" align="center" key={memory._id}>
-              <Link className="memory-link" to={`/memory/${memory._id}`}>{memory.city}</Link>
+              <Link className="memory-link" to={`/memory/${memory._id}`}>{`${memory.city}, ${memory.country}`}</Link>
             </div>
           )) : <p>You don't have any memories yet.</p>}
       </div>

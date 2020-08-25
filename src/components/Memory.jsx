@@ -7,7 +7,7 @@ function Memory(props) {
   let i = 0;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMemory = async () => {
       const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -19,8 +19,19 @@ function Memory(props) {
       // console.log('Data is here', data);
       setMemory(data);
     };
-    fetchData();
+    fetchMemory();
   }, [id]);
+
+  const deleteMemory = async () => {
+    const deleted = await fetch(`/.netlify/functions/api/memories/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+    console.log(deleted);
+  }
 
   return (
     <div>
@@ -28,6 +39,12 @@ function Memory(props) {
         {memory
           ? (
             <div>
+              <Link className="edit-btn" to={'/'} onClick={deleteMemory}>
+                <i className="fas fa-trash"></i> DELETE 
+              </Link>
+              <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
+                <i className="fas fa-edit"></i> EDIT 
+              </Link>
               <p className="date">{memory.date}</p>
               <h2 className="memory-ttl">{memory.title}</h2>
               <div>
@@ -35,12 +52,12 @@ function Memory(props) {
                   <img
                     className="artist-img-big"
                     src={photo}
-                    alt="my memory" 
-                    key={`${id}_${i++}`}/>
+                    alt="my memory"
+                    key={`${id}_${i++}`} />
                 ))}
               </div>
               <hr />
-              <h3>{memory.city}</h3>
+              <h3>{memory.city}, {memory.country}</h3>
               <p>{memory.description}</p>
             </div>
           )
