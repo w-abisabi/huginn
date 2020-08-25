@@ -3,7 +3,7 @@ const api = require('./apiCrudFunctions.js');
 exports.handler = async (event) => {
   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
   const segments = path.split('/').filter((e) => e);
-  
+
   if (!segments.length) {
     return {
       statusCode: 200,
@@ -19,8 +19,17 @@ exports.handler = async (event) => {
           return allMemories
         }
         if (segments.length === 2) {
-          const oneMemory = await api.getJustOne(segments[1]);
-          return oneMemory;
+          switch (segments[1]) {
+            case 'cities':
+              const allCities = await api.getByCategory('city');
+              return allCities;
+            case 'countries':
+              const allCountries = await api.getByCategory('country');
+              return allCountries;
+            default:
+              const oneMemory = await api.getJustOne(segments[1]);
+              return oneMemory;
+          }
         }
         return {
           statusCode: 400,

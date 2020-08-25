@@ -7,11 +7,11 @@ const db = mongoose.connection;
 const getAll = async () => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    let allPlaces = await Memory.find();
+    const allMemories = await Memory.find();
     db.close();
     return {
       statusCode: 200,
-      body: JSON.stringify(allPlaces),
+      body: JSON.stringify(allMemories),
     };
   } catch (err) {
     db.close();
@@ -37,6 +37,32 @@ const getJustOne = async (id) => {
     return {
       statusCode: 404,
       body: JSON.stringify(err)
+    }
+  }
+};
+
+const getByCategory = async (category) => {
+  await mongoose.connect(uri, { useNewUrlParser: true });
+
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
+  try {
+    const allMemories = await Memory.find();
+    const cities = allMemories.map(memory => memory[category]);
+    console.log('All cities:', cities);
+    const uniqueCities = cities.filter(onlyUnique);
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(uniqueCities),
+    };
+  } catch (err) {
+    db.close();
+    return {
+      statusCode: 400,
+      body: JSON.stringify(err),
     }
   }
 };
@@ -134,6 +160,7 @@ const deleteMemory = async (id) => {
 module.exports = {
   getAll,
   getJustOne,
+  getByCategory,
   createNewMemory,
   updateMemory,
   deleteMemory
