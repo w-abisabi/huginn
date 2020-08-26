@@ -15,17 +15,19 @@ function MemoryMap() {
   };
 
   const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map);
+    // const bounds = new window.google.maps.LatLngBounds();
+    // map.fitBounds(bounds);
+    // setMap(map);
   }, []);
 
   const onUnmount = useCallback(function callback(map) {
     setMap(null);
   }, []);
-  const GOOGLE_MAPS_API = process.env.GOOGLE_MAPS_API
+
+
+  const GOOGLE_MAPS_API = process.env.REACT_APP_GOOGLE_MAPS_API
   return (
-    <LoadScript googleMapsApiKey={{GOOGLE_MAPS_API}}>
+    <LoadScript googleMapsApiKey={GOOGLE_MAPS_API}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

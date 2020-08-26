@@ -25,9 +25,9 @@ function Home() {
           className="cover-photo"
           style={{ backgroundImage: `url(${coverphoto})` }}
         >
-          <h2 className="welcome">Welcome to Huginn, Levy! </h2>
-          <h2 className="stats"><i class="fas fa-map-pin"></i> places: 4 | momories: 12 </h2>
-          <div className="logged-as">Logged in as: {user.email} | <a className="logout-btn" onClick={logout}>
+          <h2 className="welcome">Welcome to Huginn! </h2>
+          <h2 className="stats"><i className="fas fa-map-pin"></i> places: 4 | momories: 12 </h2>
+          <div className="logged-as">Logged in as: {user.email} | <a href="https://www.beautiful.ai/-M9byEexZg7hQ6J3F30A/1" className="logout-btn" onClick={logout}>
           <i className="fas fa-sign-out-alt"></i>
           </a></div>
           <Link to="/new" className="add-cover-btn">
