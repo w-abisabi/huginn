@@ -11,6 +11,7 @@ import Home from './components/Home';
 import BucketList from './components/BucketList';
 import AddNewMemory from './components/AddNewMemory';
 import Memory from './components/Memory';
+import About from './components/About'
 import EditMemory from './components/EditMemory';
 
 const App = () => {
@@ -30,6 +31,9 @@ const App = () => {
           </Route>
           <Route path="/bucket-list">
             <BucketList />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
           <Route path="/new">
             <AddNewMemory />

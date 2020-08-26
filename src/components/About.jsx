@@ -13,7 +13,9 @@ const About = () => (
     <p>
       You can save pictures, descriptions and notes about places you have visited on a world map, so you will always have a visible keepsake. A memory of that moment in time you were on the other side of the world (or 20 km from your hometown) living through something that was special enough to remember 20 years down the line. A picture you snap with your phone, a note about a conversation you want to remember, or the bus ticket you bought on the night you kissed that special someone.
     </p>
-    Discover the world, see new things, and remember them with Huginn. Travel will never be the same.
+    <blockquote >Discover the world, see new things, and remember them with Huginn. Travel will never be the same.</blockquote>
+
+    <Developers />
 
     Huginn is made by four avid travelers.
 
@@ -21,7 +23,6 @@ const About = () => (
     <p>
       His first big trip was to the other side of the world: a Polish guy traveling all the way to New Zealand. His first time so far from home, flying down south below the equator with no return ticket in his pocket. After this adventure he traveled to Australia, Malaysia, Sri Lanka and the Maldives, ending up in rainy Holland where he is now finishing the <span>&lt;</span><span>&#47;</span>salt<span>&gt;</span> bootcamp to pursue his developer dreams.
     </p>
-    
 
     <h1>Aura</h1>
     <p>
@@ -35,7 +36,6 @@ const About = () => (
     <p>
       18 years old, fresh out off high school she flew to Milan to live and work there for six months. This is where a lifelong love for travel was born. Her dream journey so far was a train trip through the land of the rising sun, where she ate sushi with rainbow tales, slept in an artist house in the mountains and met the biggest spider she saw in her life. With coding she would love to explore more of her mind, and the world at the same time.
     </p>
-    <Developers />
   </div>
 );
 

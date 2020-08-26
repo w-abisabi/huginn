@@ -35,7 +35,6 @@ function Home() {
         <div className="map"></div>
 
       </div>
-
       <MyMemories />
     </div>
   );
