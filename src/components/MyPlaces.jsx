@@ -5,8 +5,6 @@ import fetchData from '../helpers/fetchData'
 const MyPlaces = () => {
   const [cities, setCities] = useState([]);
 
-  
-
   useEffect( async () => {
     const data = await fetchData('GET', 'memories/cities');
     const parsedPlaces = await response.json(data)
