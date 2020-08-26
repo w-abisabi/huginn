@@ -7,11 +7,11 @@ const db = mongoose.connection;
 const getAll = async () => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    let allPlaces = await Memory.find();
+    const allMemories = await Memory.find();
     db.close();
     return {
       statusCode: 200,
-      body: JSON.stringify(allPlaces),
+      body: JSON.stringify(allMemories),
     };
   } catch (err) {
     db.close();
@@ -32,11 +32,53 @@ const getJustOne = async (id) => {
       body: JSON.stringify(memoryById),
     };
   } catch (err) {
-    console.log('PATRYK>>', err, '<<<');
     db.close();
     return {
       statusCode: 404,
       body: JSON.stringify(err)
+    }
+  }
+};
+
+const getByCategory = async (category) => {
+  await mongoose.connect(uri, { useNewUrlParser: true });
+
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
+  try {
+    const allMemories = await Memory.find();
+    const cities = allMemories.map(memory => memory[category]);
+    const uniqueCities = cities.filter(onlyUnique);
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(uniqueCities),
+    };
+  } catch (err) {
+    db.close();
+    return {
+      statusCode: 400,
+      body: JSON.stringify(err),
+    }
+  }
+};
+
+const getByCity = async (city) => {
+  await mongoose.connect(uri, { useNewUrlParser: true });
+  try {
+    const memoriesByCity = await Memory.find({ city });
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(memoriesByCity),
+    };
+  } catch (err) {
+    db.close();
+    return {
+      statusCode: 400,
+      body: JSON.stringify(err),
     }
   }
 };
@@ -104,7 +146,6 @@ const updateMemory = async (id, reqBody) => {
       body: 'Memory updated succesfully'
     };
   } catch (err) {
-    console.log('PATRYK:', err);
     db.close();
     return {
       statusCode: 503,
@@ -134,6 +175,8 @@ const deleteMemory = async (id) => {
 module.exports = {
   getAll,
   getJustOne,
+  getByCategory,
+  getByCity,
   createNewMemory,
   updateMemory,
   deleteMemory

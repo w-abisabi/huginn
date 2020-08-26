@@ -1,53 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import DropdownCountries from './DropdownCountries';
+import fetchData from '../helpers/fetchData'
 
 function Memory(props) {
-  const [memory, setMemory] = useState();
+  const history = useHistory();
+  const [memory, setMemory] = useState({
+    date: '',
+    title: '',
+    photos: [],
+    city: '',
+    country: '',
+    description: '',
+  });
   const id = props.match.params.id;
-  let i = 0;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
+  function handleChange(evt) {
+    const value = evt.target.value;
+    setMemory({
+      ...memory,
+      [evt.target.name]: value,
+    });
+  }
 
-      const data = await response.json();
-      // console.log('Data is here', data);
-      setMemory(data);
-    };
-    fetchData();
+  useEffect( () => {
+    const getMemory = async() => {
+      setMemory(await fetchData('GET', `/memories/${id}`));
+    }
+    getMemory();
   }, [id]);
+
+  const updateMemory = async (e) => {
+    e.preventDefault();
+    await fetch(`/.netlify/functions/api/memories/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(memory),
+      method: 'PUT',
+    });
+    history.push('/');
+  }
 
   return (
     <div>
+      <h3>Edit Memory</h3> <Link className="cancel-link" to={`/memory/${id}`}>CANCEL</Link>
       <div className="memory">
-        {memory
-          ? (
-            <div>
-              <p className="date">{memory.date}</p>
-              <h2 className="memory-ttl">{memory.title}</h2>
-              <div>
-                {memory.photos.map(photo => (
-                  <img
-                    className="artist-img-big"
-                    src={photo}
-                    alt="my memory" 
-                    key={`${id}_${i++}`}/>
-                ))}
-              </div>
-              <hr />
-              <h3>{memory.city}</h3>
-              <p>{memory.description}</p>
-            </div>
-          )
-          : null}
-        <Link className="back-btn" to={'/'}>
-          <i className="fas fa-arrow-left"></i> BACK
-        </Link>
+        {/* <div>Date:</div><div contenteditable="true">{memory.date}</div> */}
+        <form onSubmit={updateMemory}>
+          <label>Date:
+              <input type="date" defaultValue={memory.date} name="date" onChange={handleChange}></input>
+          </label>
+          <label>Title:
+            <input type="text" defaultValue={memory.title} name="title" onChange={handleChange}></input>
+          </label>
+          <label>Description:
+            <input type="text" defaultValue={memory.description} name="title" onChange={handleChange}></input>
+          </label>
+          <p>(photos here)</p>
+          <h3>Location:</h3>
+          <DropdownCountries onSelectCountry={handleChange} />
+          <label>City:
+            <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
+          </label>
+          <button type="submit">SAVE CHANGES</button>
+        </form>
       </div>
     </div>
   );
