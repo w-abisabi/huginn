@@ -54,14 +54,8 @@ function Home() {
         >
           <h2 className="welcome">Welcome to Huginn! </h2>
           <h2 className="stats"><i className="fas fa-map-pin"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
-          <div className="logged-as">Logged in as: {user.email} | <a href="https://www.beautiful.ai/-M9byEexZg7hQ6J3F30A/1" className="logout-btn" onClick={logout}>
+          <div className="logged-as">Logged in as: {user.email} | <a href="/login" className="logout-btn" onClick={logout}>
             <i className="fas fa-sign-out-alt"></i>
-            {/* <div className="coverphoto">
-              <img
-                className="img-coverphoto"
-                src={user.coverphoto}
-                alt="my memory" />
-            </div> */}
           </a></div>
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
