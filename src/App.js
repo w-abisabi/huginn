@@ -22,22 +22,15 @@ const App = () => {
         <nav>
           <Navigation />
         </nav>
+        <div className="filler"></div>
         <Switch>
           <Route path="/login">
-            <Redirect to="/" />
+            <Redirect to="/"/>
           </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/bucket-list">
-            <BucketList />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/new">
-            <AddNewMemory />
-          </Route>
+          <Route component={Home} exact path="/"></Route>
+          <Route component={BucketList} path="/bucket-list"></Route>
+          <Route component={AddNewMemory} path="/new"></Route>
+          <Route component={About} path="/about"></Route>
           <Route component={EditMemory} path="/memory/edit/:id"></Route>
           <Route component={Memory} path="/memory/:id"></Route>
         </Switch>
