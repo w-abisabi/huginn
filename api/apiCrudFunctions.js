@@ -67,6 +67,24 @@ const getByCategory = async (category) => {
   }
 };
 
+const getByCity = async (city) => {
+  await mongoose.connect(uri, { useNewUrlParser: true });
+  try {
+    const memoriesByCity = await Memory.find({ city });
+    db.close();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(memoriesByCity),
+    };
+  } catch (err) {
+    db.close();
+    return {
+      statusCode: 400,
+      body: JSON.stringify(err),
+    }
+  }
+};
+
 const createNewMemory = async (reqBody) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   if (!reqBody) {
@@ -161,6 +179,7 @@ module.exports = {
   getAll,
   getJustOne,
   getByCategory,
+  getByCity,
   createNewMemory,
   updateMemory,
   deleteMemory
