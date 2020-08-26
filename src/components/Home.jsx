@@ -24,8 +24,8 @@ function Home() {
     }
   };
 
-  const coverphoto =
-    'https://i.ibb.co/G3VyVLH/41323119-10205298342934849-1734228371589562368-n.jpg'; // change to user.coverphoto after fixing mongo
+  // const coverphoto =
+    // 'https://i.ibb.co/G3VyVLH/41323119-10205298342934849-1734228371589562368-n.jpg'; // change to user.coverphoto after fixing mongo
 
   useEffect(() => {
     const getNCountries = async () => {
@@ -34,7 +34,7 @@ function Home() {
     }
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
-    setNCities(cities.length);
+      setNCities(cities.length);
     }
     const getNMemories = async () => {
       const memories = await fetchData('GET', '/memories/');
@@ -50,12 +50,18 @@ function Home() {
       <div className="cover">
         <div
           className="cover-photo"
-          style={{ backgroundImage: `url(${coverphoto})` }}
+          style={{ backgroundImage: `url(${user.coverphoto})` }}
         >
           <h2 className="welcome">Welcome to Huginn! </h2>
           <h2 className="stats"><i className="fas fa-map-pin"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
           <div className="logged-as">Logged in as: {user.email} | <a href="https://www.beautiful.ai/-M9byEexZg7hQ6J3F30A/1" className="logout-btn" onClick={logout}>
             <i className="fas fa-sign-out-alt"></i>
+            {/* <div className="coverphoto">
+              <img
+                className="img-coverphoto"
+                src={user.coverphoto}
+                alt="my memory" />
+            </div> */}
           </a></div>
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY

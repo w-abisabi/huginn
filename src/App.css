@@ -86,6 +86,16 @@ header nav ul li .a-link.active {
   background: rgb(93, 93, 93);
 }
 
+.img-coverphoto {
+  height: 200px;
+}
+
+.coverphoto {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
 .menu-toggle {
   color: #fff;
   float: right;
