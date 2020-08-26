@@ -32,7 +32,6 @@ const getJustOne = async (id) => {
       body: JSON.stringify(memoryById),
     };
   } catch (err) {
-    console.log('PATRYK>>', err, '<<<');
     db.close();
     return {
       statusCode: 404,
@@ -51,7 +50,6 @@ const getByCategory = async (category) => {
   try {
     const allMemories = await Memory.find();
     const cities = allMemories.map(memory => memory[category]);
-    console.log('All cities:', cities);
     const uniqueCities = cities.filter(onlyUnique);
     db.close();
     return {
@@ -148,7 +146,6 @@ const updateMemory = async (id, reqBody) => {
       body: 'Memory updated succesfully'
     };
   } catch (err) {
-    console.log('PATRYK:', err);
     db.close();
     return {
       statusCode: 503,

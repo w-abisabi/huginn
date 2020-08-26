@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import DropdownCountries from './DropdownCountries';
+import fetchData from '../helpers/fetchData'
 
 function Memory(props) {
   const history = useHistory();
@@ -22,20 +23,11 @@ function Memory(props) {
     });
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
-
-      const data = await response.json();
-      // console.log('Data is here', data);
-      setMemory(data);
-    };
-    fetchData();
+  useEffect( () => {
+    const getMemory = async() => {
+      setMemory(await fetchData('GET', `/memories/${id}`));
+    }
+    getMemory();
   }, [id]);
 
   const updateMemory = async (e) => {
@@ -68,7 +60,7 @@ function Memory(props) {
           </label>
           <p>(photos here)</p>
           <h3>Location:</h3>
-          <DropdownCountries onSelectCountry={handleChange}/>
+          <DropdownCountries onSelectCountry={handleChange} />
           <label>City:
             <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
           </label>

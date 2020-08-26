@@ -1,43 +1,50 @@
-import React, {useEffect,
-   //useState
-  } from 'react';
+import React, { useEffect } from 'react';
 import {
   GoogleMap,
   withScriptjs,
   withGoogleMap,
   Marker,
 } from 'react-google-maps';
-import axios from 'axios';
+import fetchData from '../helpers/fetchData';
 
 function Map() {
-  // const [placesData, setplacesData] = useState([]);
+  const fetchCities = async () => {
+    try {
+      const path = '/memories/cities';
+      const cities = await fetchData('GET', path);
+      return cities;
+    } catch (error) {
+      console.log('GEO ERROR', error);
+    }
+  };
 
-  const geocoder = () => {
-    const location = 'Amsterdam';
-    const REACT_APP_GOOGLE_MAPS_API = process.env.REACT_APP_GOOGLE_MAPS_API
-    axios
-      .get('https://maps.googleapis.com/maps/api/geocode/json', {
-        params: {
-          address: location,
-          key: REACT_APP_GOOGLE_MAPS_API,
-        },
-      })
-      .then(function (response) {
-        // Log full response
-        console.log("GEO RES", response);
-        // const cooordinates = response.data.results[0].geometry.location
-      })
-      .catch(function (error) {
-        console.log("GEO ERROR", error);
-      });
-      // return cooordinates
+  const geocoder = async (location) => {
+    const REACT_APP_GOOGLE_GEO = process.env.REACT_APP_GOOGLE_GEO;
+    try {
+      let response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${REACT_APP_GOOGLE_GEO}`
+      );
+      const parsedResponse = await response.json();
+      console.log('parsedResponse', parsedResponse);
+      let coordinates = await parsedResponse.results[0].geometry.location;
+      console.log('coordinates', coordinates);
+      return coordinates;
+    } catch (error) {
+      console.log('GEO ERROR', error);
+    }
   };
 
   useEffect(() => {
-    geocoder();
-  //   setplacesData({
-  //     placesData.map((place) => geocoder(place))
-  //   });
+    const functionAura = async () => {
+      const locations = await fetchCities();
+      return locations;
+    };
+    functionAura()
+      .then((locations) => {
+        const placesData2 = locations.map((location) => geocoder(location));
+        return placesData2;
+      })
+      .then((placesData2) => console.log('placesData2', placesData2));
   }, []);
 
   const placesData = [
@@ -52,7 +59,6 @@ function Map() {
       coordinates: [52.3, 4.89],
     },
   ];
-
 
   return (
     <GoogleMap defaultZoom={4} defaultCenter={{ lat: 52.3, lng: 4.89 }}>
@@ -72,7 +78,7 @@ export default function MemoryMap() {
   return (
     <div style={{ width: '100%', height: '400px' }}>
       <WrappedMap
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAPS_API}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_MAP_JS_API}
         `}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
@@ -81,4 +87,3 @@ export default function MemoryMap() {
     </div>
   );
 }
-
