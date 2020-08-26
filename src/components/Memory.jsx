@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import fetchData from '../helpers/fetchData'
+import { v4 as uuidv4 } from 'uuid';
+
 
 function Memory(props) {
   const [memory, setMemory] = useState();
   const id = props.match.params.id;
-  let i = 0;
 
   useEffect(() => {
-    const fetchMemory = async () => {
-      const response = await fetch(`/.netlify/functions/api/memories/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
-
-      const data = await response.json();
-      // console.log('Data is here', data);
-      setMemory(data);
+    const getMemory = async () => {
+      setMemory(await fetchData('GET', `/memories/${id}`));
     };
-    fetchMemory();
+    getMemory();
   }, [id]);
 
   const deleteMemory = async () => {
@@ -53,7 +46,7 @@ function Memory(props) {
                     className="artist-img-big"
                     src={photo}
                     alt="my memory"
-                    key={`${id}_${i++}`} />
+                    key={uuidv4()} />
                 ))}
               </div>
               <hr />
@@ -62,7 +55,7 @@ function Memory(props) {
             </div>
           )
           : null}
-        <Link className="back-btn" to={'/'}>
+        <Link className="back-btn" to={memory ? `/city/${memory.city}` : '/'}>
           <i className="fas fa-arrow-left"></i> BACK
         </Link>
       </div>
