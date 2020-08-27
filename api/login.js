@@ -10,7 +10,7 @@ exports.handler = async (event) => {
   try {
     await dbClient.connect();
     const users = dbClient.usersCollection();
-    const { email, password, coverphoto } = JSON.parse(event.body);
+    const { email, password } = JSON.parse(event.body);
     const existingUser = await users.findOne({ email });
 
     if (existingUser == null) {
@@ -25,7 +25,7 @@ exports.handler = async (event) => {
     }
 
     const userId = existingUser._id;
-    const jwtCookie = createJwtCookie(userId, email, coverphoto);
+    const jwtCookie = createJwtCookie(userId, email );
 
     return {
       statusCode: 200,
@@ -33,7 +33,7 @@ exports.handler = async (event) => {
         "Set-Cookie": jwtCookie,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: userId, email, coverphoto }),
+      body: JSON.stringify({ id: userId, email }),
     }
   } catch (err) {
     return {

@@ -10,7 +10,7 @@ exports.handler = async (event) => {
   try {
     await dbClient.connect();
     const users = dbClient.usersCollection();
-    const { email, password, coverphoto } = JSON.parse(event.body);
+    const { email, password } = JSON.parse(event.body);
     const existingUser = await users.findOne({ email });
 
     if (existingUser !== null) {
@@ -21,8 +21,7 @@ exports.handler = async (event) => {
     const passwordHash = await bcrypt.hash(password, 10);
     const { insertedId } = await users.insertOne({
       email,
-      password: passwordHash,
-      coverphoto
+      password: passwordHash
     });
 
     const jwtCookie = createJwtCookie(insertedId, email);
@@ -33,7 +32,7 @@ exports.handler = async (event) => {
         "Set-Cookie": jwtCookie,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ id: insertedId, email, coverphoto })
+      body: JSON.stringify({ id: insertedId, email })
     };
   } catch (err) {
     return {
