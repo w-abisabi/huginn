@@ -19,11 +19,11 @@ function Login() {
 
   return (
     <div className="page-container">
-      <Form className="form-control" title="Login" onSubmit={login} inputs={inputs} />
-      <p>
-        Don't have an account? <Link to="/signup">Sign up here</Link>
-      </p>
-    </div>
+        <Form className="form-control" title="Login" onSubmit={login} inputs={inputs} />
+        <p>
+          Don't have an account? <Link to="/signup">Sign up here</Link>
+        </p>
+      </div>
   );
 }
 

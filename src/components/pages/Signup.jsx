@@ -19,11 +19,11 @@ function Signup() {
 
   return (
     <div className="page-container">
-      <Form title="Signup" onSubmit={signup} inputs={inputs} />
-      <p>
-        Already have an account? <Link to="/login">Log in here</Link>
-      </p>
-    </div>
+        <Form title="Signup" onSubmit={signup} inputs={inputs} />
+        <p>
+          Already have an account? <Link to="/login">Log in here</Link>
+        </p>
+      </div>
   );
 }
 
