@@ -29,7 +29,7 @@ function OnePlace(props) {
               width="150px"
               alt="my memory" />
               <Link className="back-btn" to={`/memory/${memory._id}`}>
-              <i className="fas fa-eye"></i> SEE MORE
+              <i className="fas fa-eye">SEE MORE</i> 
         </Link>
             <hr />
           </div>
