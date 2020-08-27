@@ -4,7 +4,7 @@ import { Carousel } from 'react-bootstrap';
 
 function Developers() {
   return (
-    <div>
+    <div className="text-shadow">
       <Carousel>
         <Carousel.Item>
           <img
@@ -13,7 +13,7 @@ function Developers() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Gabriel</h3>
+            <h3 className="">Gabriel</h3>
             <p>Will probably use his coding skills to use drones to drop off seeds all over our planet</p>
           </Carousel.Caption>
         </Carousel.Item>

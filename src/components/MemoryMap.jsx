@@ -39,12 +39,13 @@ function Map() {
       const locations = await fetchCities();
       return locations;
     };
-    functionAura()
-      .then((locations) => {
-        const placesData2 = locations.map((location) => geocoder(location));
-        return placesData2;
-      })
-      .then((placesData2) => console.log('placesData2', placesData2));
+    functionAura().then((locations) => {
+      const placesData2 = locations.map(
+        async (location) => await geocoder(location)
+      );
+      
+      return placesData2;
+    }).then(placesData2 => console.log('placesData2', placesData2));
   }, []);
 
   const placesData = [
