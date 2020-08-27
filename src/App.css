@@ -32,6 +32,14 @@ html, body {
   );
 }
 
+.nav-link:active {
+  color: white;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+}
+
 .logo {
   position: absolute;
   top: 0;

@@ -22,10 +22,10 @@ function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
         
-          <Nav.Link><Link to="/">Home</Link></Nav.Link>
-          <Nav.Link><Link to="/new">Add New</Link></Nav.Link>
-          <Nav.Link><Link to="/about">About</Link></Nav.Link>
-          <Nav.Link onClick={logout}><Link to="/login">logout<i className="fas fa-sign-out-alt"></i></Link></Nav.Link>
+          <Nav.Link><Link className="nav-link" to="/">Home</Link></Nav.Link>
+          <Nav.Link><Link className="nav-link" to="/new">Add New</Link></Nav.Link>
+          <Nav.Link><Link className="nav-link" to="/about">About</Link></Nav.Link>
+          <Nav.Link onClick={logout}><Link className="nav-link" to="/login">logout<i className="fas fa-sign-out-alt"></i></Link></Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
