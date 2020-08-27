@@ -12,10 +12,8 @@ function Home() {
   const [nCities, setNCities] = useState();
   const [nCountries, setNCountries] = useState();
   const [nMemories, setNMemories] = useState();
-  const [countriesList, setCountriesList] = useState(["Gdansk",
-  "Rome",
-  "Amsterdam",
-  "Osaka"]);
+  const [countriesList, setCountriesList] = useState([]);
+  const [memoryMapHTML, setMemoryMapHTML] = useState();
 
   const coverphoto =
     'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80'; // change to user.coverphoto after fixing mongo
@@ -23,18 +21,19 @@ function Home() {
   useEffect(() => {
     const getNCountries = async () => {
       const countries = await fetchData('GET', '/memories/countries/');
-      setCountriesList(countries);
-      console.log("!!!!!!!!!!", countriesList);
       setNCountries(countries.length);
     }
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
+      setCountriesList(cities);
+      setMemoryMapHTML(<MemoryMap countriesList={cities}/>) // <<<<<<<<<<<<<<<<<
       setNCities(cities.length);
     }
     const getNMemories = async () => {
       const memories = await fetchData('GET', '/memories/');
       setNMemories(memories.length);
     }
+    
     getNCountries();
     getNCities();
     getNMemories();
@@ -48,7 +47,7 @@ function Home() {
           style={{ backgroundImage: `url(${coverphoto})` }}
         >
           <h2 className="welcome">Welcome to Huginn! </h2>
-          <h2 className="stats"><i className="fas fa-passport"></i> countries: {countriesList} {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
+          <h2 className="stats"><i className="fas fa-passport"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
           </Link>
@@ -65,7 +64,8 @@ function Home() {
           breakfast they are back again."
       </p>
       </div>
-      <MemoryMap countriesList={countriesList}/>
+      {memoryMapHTML}
+      {/* <MemoryMap countriesList={countriesList}/> */}
       <MyPlaces />
     </div>
   );
