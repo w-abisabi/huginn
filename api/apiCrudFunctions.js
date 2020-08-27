@@ -139,10 +139,8 @@ const updateMemory = async (email, id, reqBody) => {
       photos
     }
     );
-    // await updatedMemory.save();
     db.close();
     return {
-      // never gets this response, even if the memory did update????
       statusCode: 200,
       body: 'Memory updated succesfully'
     };
