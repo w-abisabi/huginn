@@ -24,7 +24,7 @@ hr.style-seven:before { /* Not really supposed to work, but does */
   border-radius: 20px;
 }
 
-body {
+html, body {
   font-family: 'Josefin Sans', sans-serif;
 }
 /*--- NAVIGATION BAR ---*/
