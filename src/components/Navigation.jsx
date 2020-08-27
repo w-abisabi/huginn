@@ -23,8 +23,8 @@ function Navigation() {
       <Link to="/new" className="add-btn">
         <i className="fas fa-plus"></i>
       </Link>
-      <Link to="/" className="logo">
-        Huginn
+      <Link to="/">
+       <p className="logo"></p>
       </Link>
       <nav id="close">
         <ul>
@@ -53,24 +53,6 @@ function Navigation() {
       <div className="menu-toggle">
         <i className="fas fa-ellipsis-v"></i>
       </div>
-      {/* <Navbar className="wabi-custom-nav" expand="lg" variant="dark">
-  
-  
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">My Memories</Nav.Link>
-      <Nav.Link href="/">Home</Nav.Link>
-      <Nav.Link href="/add">ADD</Nav.Link>
-      <Nav.Link href="/about">About</Nav.Link>
-    </Nav>
-    
-  </Navbar.Collapse>
-  <Navbar.Brand href="/">Huginn</Navbar.Brand>
-  <Link className="btn-plus" to="/add">
-    <i className="fas fa-plus"></i>
-  </Link>
-</Navbar> */}
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     </header>
   );
