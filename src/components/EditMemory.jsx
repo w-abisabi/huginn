@@ -34,16 +34,15 @@ function Memory(props) {
   }
 
   function deletePhoto(e) {
-    const index = e.target.dataset.index;
-    const newPhotoArray = memory.photos.filter((photo, i) => i !== index );
-    console.log('newPhotoArray', newPhotoArray);
-
+    const index = parseInt(e.target.dataset.index);
+    const newPhotoArray = memory.photos.filter( (photo, i) => i !== ( index ) );
+    const newArray = { ...memory, photos: newPhotoArray };
+    setMemory(newArray);
   }
 
   useEffect(() => {
     const getMemory = async () => {
       const fetchedMemory = await fetchData('GET', `memories/${id}`);
-      console.log('memoryyyy', fetchedMemory);
       setMemory(fetchedMemory[0]);
     }
     getMemory();

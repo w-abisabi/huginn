@@ -11,7 +11,6 @@ function Memory(props) {
   useEffect(() => {
     const getMemory = async () => {
       const fetchedMemory = await fetchData('GET', `memories/${id}`);
-      console.log('memoryyyy', fetchedMemory);
       setMemory(fetchedMemory[0]);
     };
     getMemory();
