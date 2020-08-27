@@ -1,41 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 
 /*-- controler ---*/
 /* *{
   outline: 1px solid red;
  } */
+.center {
+  margin: 5px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.style-seven {
+  align-items: center;
+  height: 5px;
+  width: 100px;
+  background-color: darkcyan;
+}
 
-body {
+
+html, body {
   font-family: 'Josefin Sans', sans-serif;
 }
 /*--- NAVIGATION BAR ---*/
-.filler {
-  height: 45px;
-}
-header {
-  /* height: 200px; */
-  z-index: 2;
-  position: fixed;
+.nav-general {
   color: #fff;
-  top: 0;
-  left: 0;
   background: rgb(0, 98, 98);
   background: linear-gradient(
     90deg,
     rgba(0, 98, 98, 1) 0%,
     rgba(0, 139, 139, 1) 100%
   );
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-around;
 }
+
 .logo {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 5px 0 0 90px;
+  position: absolute;
+  top: 0;
+  margin-top: 17px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 85px;
   height: 26px;
   background: url('./static/huginn_text_white.png');
@@ -49,106 +51,31 @@ header {
   text-decoration: none;
 }
 
-header .add-btn {
+.add-btn {
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
-  line-height: 50px;
-  font-size: 24px;
   font-weight: bold;
 }
 
-header .add-btn:hover {
-  color: rgb(191, 221, 217);
+.add-btn:hover {
+  color: rgb(142, 192, 185);
   text-decoration: none;
 }
 
-header nav {
-  float: right;
-}
 
-header nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
 
-header nav ul li {
-  list-style: none;
-}
-
-header nav ul li .a-link {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  color: #fff;
-  text-decoration: none;
-  display: block;
-}
-header nav ul li .a-link:hover,
-header nav ul li .a-link.active {
-  color: #fff;
-  text-decoration: none;
-  background: rgb(0, 59, 59);
-}
-
-.img-coverphoto {
+/* .img-coverphoto {
   height: 200px;
-}
+} */
 
-.coverphoto {
+/* .coverphoto {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-}
-
-.menu-toggle {
-  color: #fff;
-  float: right;
-  line-height: 50px;
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
-}
-.menu-toggle:hover {
-  color: rgb(191, 221, 217);
-}
-
-@media (max-width: 991px) {
-  header {
-    padding: 0 20px;
-  }
-  .menu-toggle {
-    display: inline;
-  }
-  header nav {
-    color: #fff;
-    position: absolute;
-    width: 100%;
-    height: calc(100vh - 50px);
-    background: rgba(40, 98, 94, 0.924);
-    top: 50px;
-    left: -100%;
-    transition: 0.5s;
-  }
-
-  .header:hover #close:active + ul > li.a-link {
-    display: none;
-  }
-
-  header nav.active {
-    left: 0;
-  }
-  header nav ul {
-    display: block;
-    text-align: center;
-  }
-  header nav ul li .a-link {
-    border-bottom: 1px solid rgba(139, 139, 139, 0.781);
-  }
-}
-
+  align-items: center; 
+} */
 /*--- NAVIGATION BAR ---*/
 /*--- LOGIN PAGE ---*/
+
 .form-wrapper {
   background-color: rgb(235, 253, 253);
   border-radius: 15px;
@@ -206,11 +133,18 @@ header nav ul li .a-link.active {
 
 .logged-as {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  color: rgb(187, 216, 216);
-  font-size: 12px;
+  font-weight: 200;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
   margin: 5px 0 30px 0;
 }
+.fa-sign-out-alt {
+  color: #fff;
+}
+.fa-sign-out-alt:hover {
+  color: rgb(142, 192, 185);
+}
+
 .add-cover-btn {
   text-align: center;
   width: 150px;
@@ -298,7 +232,7 @@ header nav ul li .a-link.active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url('./static/footer-bcg.jpg');
+  background: url('./static/waterlily2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -308,6 +242,15 @@ header nav ul li .a-link.active {
   text-align: center;
   font-weight: 100;
   margin: 29px 0;
+  color: white
+}
+
+.memory-p {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  font-weight: 100;
+  margin: 29px 0;
+  color: #fff;
 }
 
 .button_mem {
@@ -346,7 +289,7 @@ header nav ul li .a-link.active {
 }
 
 /*--- MY PLACES LIST ---*/
-/*--- INFO PAGE ---*/
+/*--- SELING POINTS PAGE ---*/
 h6 {
   margin: 0;
 }
@@ -363,24 +306,132 @@ h6 + p {
   font-family: 'Josefin Sans', sans-serif;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
-  justify-content: center;    
+  justify-content: center;
   padding: 25px;
   color: darkcyan;
 }
 
-.item-a .item-c .item-e{
+.item-a .item-c .item-e {
   grid-column: 1;
 }
 .item-b .item-d .item-f {
   grid-column: 2;
 }
-/*--- INFO PAGE ---*/
+/*--- SELING POINTS PAGE ---*/
+/*--- ABOUT PAGE ---*/
+.text-shadow {
+  text-shadow: 2px 2px 15px rgb(0, 0, 0);
+}
+.about-container {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.about-intro{
+  color: white;
+  text-shadow: 2px 2px 15px rgb(70, 70, 70);
+  padding: 25px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('./static/girl-t.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.about-intro section {
+  margin-top: 22px;
+  font-size: 21px;
+  line-height: 1.1; 
+}
+
+.about-intro p {
+  background: rgba(255, 255, 255, 0.192);
+  padding: 20px;
+  border-radius: 15px;
+  font-weight: 300;
+  margin-top: 25px;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.dev-des-title {
+  margin-bottom: 25px;
+  color: darkcyan;
+  font-weight: 700;
+  text-align: center;
+}
+
+.a-map-of-memories {
+  padding: 20px;
+  line-height: 1.3;
+}
+
+.dev-des h1 {
+  color: darkcyan;
+  font-size: 19px;
+  margin-bottom: 0;
+  text-align: center;
+}
+.dev-des p {
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.a-map-of-memories p {
+  font-weight: 300;
+}
+
+.a-map-of-memories h1 {
+  color: darkcyan;
+  font-weight: 500;
+  font-size: 25px;
+  text-align: center;
+}
+/*--- ABOUT PAGE ---*/
+/*--- FOOTER ---*/
+.footer-bcg {
+  color: #fff;
+  padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 40px;
+  background: rgb(0, 98, 98);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 98, 1) 0%,
+    rgba(0, 139, 139, 1) 100%
+  );
+}
+.footerlink {
+  text-align: center;
+  margin: 0;
+}
+
+.footerlink a{
+  color: #fff;
+  font-size: 12px;
+  margin: 0;
+}
+
+.footerlink a:hover {
+  color: rgb(191, 221, 217);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*--- FOOTER ---*/
 .my-memories {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   color: rgb(93, 93, 93);
+}
+
+.dev-des {
+  padding: 10px;
 }
 
 .memory {
@@ -404,13 +455,6 @@ h6 + p {
   font-size: 25px;
 }
 
-.artist-img-big {
-  border-radius: 0 25px 0 25px;
-  margin: 0 15px 0 0;
-  object-fit: cover;
-  width: 280px;
-  height: auto;
-}
 
 /* --------------------------- */
 .button_cont {

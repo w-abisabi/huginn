@@ -1,14 +1,15 @@
 import React from 'react';
 
-function DropdownCountries( props ) {
+function DropdownCountries({ onSelectCountry, country }) {
 
   const handleChange = (e) => {
-    props.onSelectCountry(e);
+    onSelectCountry(e);
   }
 
   return (
     < label > Country
       < select id="country" name="country" className="form-control" onChange={handleChange}>
+        <option value={country}>{country ? country : 'Select a country'}</option>
         <option value="Afghanistan">Afghanistan</option>
         <option value="Åland Islands">Åland Islands</option>
         <option value="Albania">Albania</option>

@@ -1,8 +1,12 @@
 const api = require('./apiCrudFunctions.js');
+const jwtDecode = require('jwt-decode');
+
 
 exports.handler = async (event) => {
   const path = event.path.replace(/\.netlify\/functions\/[^/]+/, '');
   const segments = path.split('/').filter((e) => e);
+  const jwtToken = event.headers.cookie.replace(/jwt=/,'');
+  const email = jwtDecode(jwtToken).email;
 
   if (!segments.length) {
     return {
@@ -15,24 +19,24 @@ exports.handler = async (event) => {
     switch (event.httpMethod) {
       case 'GET':
         if (segments.length === 1) {
-          const allMemories = await api.getAll();
+          const allMemories = await api.getAll(email);
           return allMemories
         }
         if (segments.length === 2) {
           switch (segments[1]) {
             case 'cities':
-              const allCities = await api.getByCategory('city');
+              const allCities = await api.getByCategory(email, 'city');
               return allCities;
             case 'countries':
-              const allCountries = await api.getByCategory('country');
+              const allCountries = await api.getByCategory(email, 'country');
               return allCountries;
             default:
-              const oneMemory = await api.getJustOne(segments[1]);
+              const oneMemory = await api.getJustOne(email, segments[1]);
               return oneMemory;
           }
         }
         if (segments.length === 3 && segments[1] === 'cities') {
-          const memoriesByCity = await api.getByCity(segments[2]);
+          const memoriesByCity = await api.getByCity(email, segments[2]);
           return memoriesByCity;
         }
         return {
@@ -40,7 +44,7 @@ exports.handler = async (event) => {
           body: 'Invalid endpoint'
         };
       case 'POST':
-        const newMemory = await api.createNewMemory(event.body);
+        const newMemory = await api.createNewMemory(email, event.body);
         return newMemory;
       case 'PUT':
         let putResponse = {
@@ -48,7 +52,7 @@ exports.handler = async (event) => {
           body: 'Invalid endpoint'
         }
         if (segments.length === 2) {
-          putResponse = await api.updateMemory(segments[1], event.body);
+          putResponse = await api.updateMemory(email, segments[1], event.body);
         }
         return putResponse;
       case 'DELETE':
