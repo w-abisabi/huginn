@@ -1,4 +1,4 @@
-const fetchData = async (method, path ) => {
+const fetchData = async (method, path) => {
   const data = await fetch(`/.netlify/functions/api/${path}`, {
     method,
     headers: {
@@ -6,7 +6,7 @@ const fetchData = async (method, path ) => {
       'Accept': 'application/json'
     }
   });
-  return await data.json();
+  return data.json();
 };
 
 export default fetchData

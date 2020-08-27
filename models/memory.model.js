@@ -9,6 +9,7 @@ const memorySchema = new Schema({
   country: { type: String, required: true },
   date: { type: String, required: true },
   photos: { type: Array, required: true },
+  username: { type: String, required: true }
 }, {
   timestamps: true,
 });

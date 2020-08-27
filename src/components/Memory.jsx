@@ -10,7 +10,8 @@ function Memory(props) {
 
   useEffect(() => {
     const getMemory = async () => {
-      setMemory(await fetchData('GET', `/memories/${id}`));
+      const fetchedMemory = await fetchData('GET', `memories/${id}`);
+      setMemory(fetchedMemory[0]);
     };
     getMemory();
   }, [id]);
@@ -41,13 +42,14 @@ function Memory(props) {
               <p className="date">{memory.date}</p>
               <h2 className="memory-ttl">{memory.title}</h2>
               <div>
-                {memory.photos.map(photo => (
+                {memory.photos
+                ? memory.photos.map(photo => (
                   <img
                     className="artist-img-big"
                     src={photo}
                     alt="my memory"
-                    key={uuidv4()} />
-                ))}
+                    key={uuidv4()} />))
+              : null}
               </div>
               <hr />
               <h3>{memory.city}, {memory.country}</h3>

@@ -17,34 +17,40 @@ function Map() {
       console.log('GEO ERROR', error);
     }
   };
-
   const geocoder = async (location) => {
+    let parsedResponse;
     const REACT_APP_GOOGLE_GEO = process.env.REACT_APP_GOOGLE_GEO;
     try {
       let response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${REACT_APP_GOOGLE_GEO}`
-      );
-      const parsedResponse = await response.json();
-      console.log('parsedResponse', parsedResponse);
-      let coordinates = await parsedResponse.results[0].geometry.location;
-      console.log('coordinates', coordinates);
-      return coordinates;
+      )
+      parsedResponse = await response.json();
     } catch (error) {
       console.log('GEO ERROR', error);
     }
+    console.log('parsedResponse', parsedResponse);
+    if (parsedResponse && parsedResponse.status === "OK") {
+      let coordinates = parsedResponse.results[0].geometry.location;
+      return coordinates;
+    } 
+    return null;
   };
 
   useEffect(() => {
     const functionAura = async () => {
-      const locations = await fetchCities();
-      return locations;
+      const locations = await fetchCities(); 
+      console.log("locations", locations);
+      const promisedPlaces = locations.map((location) => geocoder(location));
+      const finalLocations = await Promise.all(promisedPlaces.filter(promise => promise !== null));
+      console.log("finalLocations", finalLocations);
+      return finalLocations;
     };
-    functionAura()
-      .then((locations) => {
-        const placesData2 = locations.map((location) => geocoder(location));
-        return placesData2;
-      })
-      .then((placesData2) => console.log('placesData2', placesData2));
+    functionAura();
+      // .then((locations) => {
+      //   const placesData2 = locations.map((location) => geocoder(location));
+      //   return placesData2;
+      // })
+      // .then((placesData2) => console.log('placesData2', placesData2));
   }, []);
 
   const placesData = [
