@@ -30,16 +30,14 @@ function Memory(props) {
 
   function addPhoto() {
     const newArray = { ...memory, photos: [...memory.photos, memory.newPhoto] }
-    console.log('newArray', newArray);
     setMemory(newArray);
-
-    // const newPhoto = e.target.value;
-    // console.log('newPhoto', newPhoto);
   }
 
-  function deletePhoto() {
-    // const newPhoto = e.target.value;
-    // console.log('newPhoto', newPhoto);
+  function deletePhoto(e) {
+    const index = e.target.dataset.index;
+    const newPhotoArray = memory.photos.filter((photo, i) => i !== index );
+    console.log('newPhotoArray', newPhotoArray);
+
   }
 
   useEffect(() => {
@@ -70,7 +68,6 @@ function Memory(props) {
     <div>
       <h3>Edit Memory</h3> <Link className="cancel-link" to={`/memory/${id}`}>CANCEL</Link>
       <div className="memory">
-        {/* <div>Date:</div><div contenteditable="true">{memory.date}</div> */}
         <form onSubmit={updateMemory}>
           <hr />
           <label>Date:
@@ -85,12 +82,13 @@ function Memory(props) {
           {/* PHOTOS */}
           <div className="photos-input">
             {memory.photos.length
-              ? memory.photos.map(photo => (
+              ? memory.photos.map((photo, i) => {
+                return (
                 <div key={uuidv4()}>
                   <img src={photo} alt="memory" width="200px" />
-                  <i className="fas fa-minus-circle" onClick={deletePhoto}></i>
+                  <i className="fas fa-minus-circle" data-index={i} onClick={deletePhoto}></i>
                 </div>
-              ))
+              )})
               : <p>Add a photo of your trip!</p>}
             <label>ADD NEW PICTURE
               <input type="text" name="newPhoto" onChange={handleChange}></input>
