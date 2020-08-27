@@ -25,7 +25,7 @@ exports.handler = async (event) => {
     }
 
     const userId = existingUser._id;
-    const jwtCookie = createJwtCookie(userId, email);
+    const jwtCookie = createJwtCookie(userId, email );
 
     return {
       statusCode: 200,

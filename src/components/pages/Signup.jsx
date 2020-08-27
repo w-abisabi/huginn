@@ -14,11 +14,6 @@ function Signup() {
     {
       name: "password",
       type: "password"
-    },
-    // my iconic trip
-    {
-      name: "coverphoto",
-      type: "coverphoto"
     }
   ];
 

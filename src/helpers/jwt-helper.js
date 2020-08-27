@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const cookie = require ("cookie");
 
-function createJwtCookie(userId, email) {
+function createJwtCookie(userId, email ) {
   const secretKey =
     "-----BEGIN RSA PRIVATE KEY-----\n" +
     process.env.JWT_SECRET_KEY +
