@@ -85,7 +85,7 @@ export default function MemoryMap(props) {
       setCoordinates(finalLocations); // array { log: lat: } ]
     };
     functionAura();
-  }, []);
+  }, [props.countriesList]);
 
   return (
     <div style={{ width: '100%', height: '400px' }}>

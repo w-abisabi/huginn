@@ -12,7 +12,7 @@ function Home() {
   const [nCities, setNCities] = useState();
   const [nCountries, setNCountries] = useState();
   const [nMemories, setNMemories] = useState();
-  const [countriesList, setCountriesList] = useState([]);
+  // const [countriesList, setCountriesList] = useState([]);
   const [memoryMapHTML, setMemoryMapHTML] = useState();
 
   const coverphoto =
@@ -25,7 +25,7 @@ function Home() {
     }
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
-      setCountriesList(cities);
+      // setCountriesList(cities);
       setMemoryMapHTML(<MemoryMap countriesList={cities}/>) // <<<<<<<<<<<<<<<<<
       setNCities(cities.length);
     }
