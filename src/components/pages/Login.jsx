@@ -14,7 +14,7 @@ function Login() {
     {
       name: "password",
       type: "password"
-    }
+    },
   ];
 
   return (
