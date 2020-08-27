@@ -14,29 +14,13 @@ function OnePlace(props) {
     getOnePlace();
   }, [city]);
 
-
-  //   const deleteMemory = async () => {
-  //     const deleted = await fetch(`/.netlify/functions/api/memories/${id}`, {
-  //       method: 'DELETE',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Accept: 'application/json',
-  //       },
-  //     });
-  //     console.log(deleted);
-  //   }
-
   return (
     <div className="memories-by-city">
+      <h2>My memories in <strong>{city}</strong> </h2>
       {memoriesByCity.length
         ? memoriesByCity.map(memory => (
           <div key={uuidv4()}>
-            {/* <Link className="edit-btn" to={'/'} onClick={deleteMemory}>
-                <i className="fas fa-trash"></i> DELETE 
-              </Link>
-              <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
-                <i className="fas fa-edit"></i> EDIT 
-              </Link> */}
+            
             <p className="date">{memory.date}</p>
             <h2 className="memory-ttl">{memory.title}</h2>
             <img
@@ -49,7 +33,7 @@ function OnePlace(props) {
             <hr />
           </div>
         ))
-        : <p>You have no memories in {city} yet</p>}
+        : <p>Loading...</p>}
       <Link className="back-btn" to={'/'}>
         <i className="fas fa-arrow-left"></i> BACK
         </Link>

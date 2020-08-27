@@ -61,7 +61,7 @@ exports.handler = async (event) => {
           body: 'Invalid endpoint'
         }
         if (segments.length === 2) {
-          deleteResponse = await api.deleteMemory(segments[1]);
+          deleteResponse = await api.deleteMemory(email, segments[1]);
         }
         return deleteResponse;
       default:

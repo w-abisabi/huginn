@@ -34,22 +34,22 @@ function Memory(props) {
           ? (
             <div>
               <Link className="edit-btn" to={'/'} onClick={deleteMemory}>
-                <i className="fas fa-trash"></i> DELETE 
+                <i className="fas fa-trash"></i> DELETE
               </Link>
               <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
-                <i className="fas fa-edit"></i> EDIT 
+                <i className="fas fa-edit"></i> EDIT
               </Link>
               <p className="date">{memory.date}</p>
               <h2 className="memory-ttl">{memory.title}</h2>
               <div>
                 {memory.photos
-                ? memory.photos.map(photo => (
-                  <img
-                    className="artist-img-big"
-                    src={photo}
-                    alt="my memory"
-                    key={uuidv4()} />))
-              : null}
+                  ? memory.photos.map(photo => (
+                    <img
+                      className="artist-img-big"
+                      src={photo}
+                      alt="my memory"
+                      key={uuidv4()} />))
+                  : null}
               </div>
               <hr />
               <h3>{memory.city}, {memory.country}</h3>
