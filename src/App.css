@@ -22,33 +22,20 @@ html, body {
   font-family: 'Josefin Sans', sans-serif;
 }
 /*--- NAVIGATION BAR ---*/
-.filler {
-  height: 45px;
-}
-header {
-  /* height: 200px; */
-  z-index: 2;
-  position: fixed;
+.nav-general {
   color: #fff;
-  top: 0;
-  left: 0;
   background: rgb(0, 98, 98);
   background: linear-gradient(
     90deg,
     rgba(0, 98, 98, 1) 0%,
     rgba(0, 139, 139, 1) 100%
   );
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-around;
 }
+
 .logo {
   position: absolute;
   top: 0;
-  margin-top: 10px;
+  margin-top: 17px;
   left: 50%;
   transform: translateX(-50%);
   width: 85px;
@@ -64,69 +51,31 @@ header {
   text-decoration: none;
 }
 
-header .add-btn {
+.add-btn {
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
-  line-height: 50px;
-  font-size: 24px;
   font-weight: bold;
 }
 
-header .add-btn:hover {
-  color: rgb(191, 221, 217);
+.add-btn:hover {
+  color: rgb(142, 192, 185);
   text-decoration: none;
 }
 
-header nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
 
-header nav ul li {
-  list-style: none;
-}
 
-header nav ul li .a-link {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  color: #fff;
-  text-decoration: none;
-  display: block;
-}
-header nav ul li .a-link:hover,
-header nav ul li .a-link.active {
-  color: #fff;
-  text-decoration: none;
-  background: rgb(0, 59, 59);
-}
-
-.img-coverphoto {
+/* .img-coverphoto {
   height: 200px;
-}
+} */
 
-.coverphoto {
+/* .coverphoto {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-}
-
-.menu-toggle {
-  color: #fff;
-  float: right;
-  line-height: 50px;
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
-}
-.menu-toggle:hover {
-  color: rgb(191, 221, 217);
-}
-
-
+  align-items: center; 
+} */
 /*--- NAVIGATION BAR ---*/
 /*--- LOGIN PAGE ---*/
+
 .form-wrapper {
   background-color: rgb(235, 253, 253);
   border-radius: 15px;
