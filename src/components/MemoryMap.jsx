@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GoogleMap,
   withScriptjs,
@@ -8,6 +8,7 @@ import {
 import fetchData from '../helpers/fetchData';
 
 function Map() {
+  const [places, setPlaces] = useState();
   const fetchCities = async () => {
     try {
       const path = '/memories/cities';
