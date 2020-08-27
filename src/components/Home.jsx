@@ -12,6 +12,10 @@ function Home() {
   const [nCities, setNCities] = useState();
   const [nCountries, setNCountries] = useState();
   const [nMemories, setNMemories] = useState();
+  const [countriesList, setCountriesList] = useState(["Gdansk",
+  "Rome",
+  "Amsterdam",
+  "Osaka"]);
 
   const coverphoto =
     'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80'; // change to user.coverphoto after fixing mongo
@@ -19,6 +23,8 @@ function Home() {
   useEffect(() => {
     const getNCountries = async () => {
       const countries = await fetchData('GET', '/memories/countries/');
+      setCountriesList(countries);
+      console.log("!!!!!!!!!!", countriesList);
       setNCountries(countries.length);
     }
     const getNCities = async () => {
@@ -42,7 +48,7 @@ function Home() {
           style={{ backgroundImage: `url(${coverphoto})` }}
         >
           <h2 className="welcome">Welcome to Huginn! </h2>
-          <h2 className="stats"><i className="fas fa-passport"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
+          <h2 className="stats"><i className="fas fa-passport"></i> countries: {countriesList} {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
           </Link>
@@ -59,7 +65,7 @@ function Home() {
           breakfast they are back again."
       </p>
       </div>
-      <MemoryMap />
+      <MemoryMap countriesList={countriesList}/>
       <MyPlaces />
     </div>
   );
