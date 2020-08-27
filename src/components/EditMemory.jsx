@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import PhotosInput from './PhotosInput';
 import DropdownCountries from './DropdownCountries';
 import fetchData from '../helpers/fetchData'
+import { v4 as uuidv4 } from 'uuid';
+
 
 function Memory(props) {
   const history = useHistory();
@@ -12,15 +15,27 @@ function Memory(props) {
     city: '',
     country: '',
     description: '',
+    newPhoto: '',
   });
+  const [nPhoto, setNPhoto] = useState({})
   const id = props.match.params.id;
 
-  function handleChange(evt) {
-    const value = evt.target.value;
+  function handleChange(e) {
+    const value = e.target.value;
     setMemory({
       ...memory,
-      [evt.target.name]: value,
+      [e.target.name]: value,
     });
+  }
+
+  function addPhoto() {
+    // const newPhoto = e.target.value;
+    // console.log('newPhoto', newPhoto);
+  }
+
+  function deletePhoto() {
+    // const newPhoto = e.target.value;
+    // console.log('newPhoto', newPhoto);
   }
 
   useEffect(() => {
@@ -51,6 +66,7 @@ function Memory(props) {
       <div className="memory">
         {/* <div>Date:</div><div contenteditable="true">{memory.date}</div> */}
         <form onSubmit={updateMemory}>
+          <hr />
           <label>Date:
               <input type="date" defaultValue={memory.date} name="date" onChange={handleChange}></input>
           </label>
@@ -60,12 +76,30 @@ function Memory(props) {
           <label>Description:
             <input type="text" defaultValue={memory.description} name="description" onChange={handleChange}></input>
           </label>
-          <p>(photos here)</p>
+          {/* PHOTOS */}
+          <div className="photos-input">
+            {memory.photos.length
+              ? memory.photos.map(photo => (
+                <div key={uuidv4()}>
+                  <img src={photo} alt="memory" width="200px" />
+                  <i className="fas fa-minus-circle" onClick={deletePhoto}></i>
+                </div>
+              ))
+              : <p>Add a photo of your trip!</p>}
+            <label>ADD NEW PICTURE
+              <input type="text" name="newPhoto"></input>
+              <button type="button" onClick={addPhoto}>
+                <i className="fas fa-plus-circle" />
+              </button>
+            </label>
+          </div>
+          {/* <PhotosInput photos={memory.photos} onAddPhoto={addPhoto} /> */}
           <h3>Location:</h3>
           <DropdownCountries country={memory.country} onSelectCountry={handleChange} />
           <label>City:
             <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
           </label>
+          <hr />
           <button type="submit">SAVE CHANGES</button>
         </form>
       </div>

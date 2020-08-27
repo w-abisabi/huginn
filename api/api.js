@@ -8,8 +8,6 @@ exports.handler = async (event) => {
   const jwtToken = event.headers.cookie.replace(/jwt=/,'');
   const email = jwtDecode(jwtToken).email;
 
-  console.log('<<email>>', email);
-
   if (!segments.length) {
     return {
       statusCode: 200,
