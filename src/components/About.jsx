@@ -17,8 +17,9 @@ const About = () => (
     </p>
     <div className="a-map-of-memories">
       <h1>A map of memories</h1>
-
-      <div className="style-seven"></div>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <p>
         Traveling enriches your life in ways that always surprise you. A
         conversation at a bus stop about a topic you never thought of, a flat
@@ -40,7 +41,9 @@ const About = () => (
         phone, a note about a conversation you want to remember, or the bus
         ticket you bought on the night you kissed that special someone.
       </p>
-      <div className="style-seven"></div>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <blockquote>
         Discover the world, see new things, and remember them with Huginn.
         Travel will never be the same.
@@ -59,8 +62,11 @@ const About = () => (
         {' '}
         Huginn is made by four avid travelers.
       </div>
-      <div className="style-seven"></div>
+      
       <h1>Patryk</h1>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <p>
         His first big trip was to the other side of the world: a Polish guy
         traveling all the way to New Zealand. His first time so far from home,
@@ -71,8 +77,11 @@ const About = () => (
         <span>&#47;</span>salt<span>&gt;</span> bootcamp to pursue his developer
         dreams.
       </p>
-      <div className="style-seven"></div>
+      
       <h1>Aura</h1>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <p>
         This girl from Mexico left her family to fly to Europe, where she found
         love in Holland. She loves to visit places with lots of nature and
@@ -81,8 +90,11 @@ const About = () => (
         end up in a tiny house in the countryside - but traveling to Mexico when
         she can, to sing with her siblings.
       </p>
-      <div className="style-seven"></div>
+      
       <h1>Gabriel</h1>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <p>
         With his long hair and rugged appearance, you will not be surprised when
         you hear that this coder-to-be has worked as a Siberian husky sled
@@ -92,8 +104,11 @@ const About = () => (
         or build a sustainable village in the mountains of his home country of
         Romania.
       </p>
-      <div className="style-seven"></div>
+      
       <h1>Marijn</h1>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <p>
         18 years old, fresh out off high school she flew to Milan to live and
         work there for six months. This is where a lifelong love for travel was

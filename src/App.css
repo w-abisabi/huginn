@@ -4,11 +4,17 @@
 /* *{
   outline: 1px solid red;
  } */
-
+.center {
+  margin: 5px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .style-seven {
-  height: 50px;
+  align-items: center;
+  height: 5px;
   width: 100px;
-  background-color: #555;
+  background-color: darkcyan;
 }
 
 
@@ -397,7 +403,7 @@ h6 + p {
 /*--- SELING POINTS PAGE ---*/
 /*--- ABOUT PAGE ---*/
 .text-shadow {
-  text-shadow: 2px 2px 15px rgb(70, 70, 70);
+  text-shadow: 2px 2px 15px rgb(0, 0, 0);
 }
 .about-container {
   font-family: 'Josefin Sans', sans-serif;
@@ -434,6 +440,7 @@ h6 + p {
 }
 
 .dev-des-title {
+  margin-bottom: 25px;
   color: darkcyan;
   font-weight: 700;
   text-align: center;
@@ -447,6 +454,7 @@ h6 + p {
 .dev-des h1 {
   color: darkcyan;
   font-size: 19px;
+  margin-bottom: 0;
   text-align: center;
 }
 .dev-des p {
