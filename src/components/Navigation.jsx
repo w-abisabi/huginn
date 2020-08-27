@@ -1,60 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Nav from 'react-bootstrap/Nav';
-import $ from 'jquery';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { useAuth } from '../providers/auth-provider';
+
 
 function Navigation() {
-  useEffect(() => {
-    $(document).ready(function () {
-      $('.menu-toggle').click(function () {
-        $('nav').toggleClass('active');
-      });
-    });
-    $(document).ready(function () {
-      $('#close').click(function () {
-        $('nav').removeClass('active');
-      });
-    });
-  });
-
+  const { logout } = useAuth();
   return (
-    <header>
-      <Link to="/new" className="add-btn">
-        <i className="fas fa-plus"></i>
-      </Link>
-      <Link to="/">
-       <p className="logo"></p>
-      </Link>
-      <nav id="close">
-        <ul>
-          <li>
-            <Link to="/about" className="a-link">
-              about
-            </Link>
-          </li>
-          <li>
-            <Link className="a-link" to="/logout">
-              logout
-            </Link>
-          </li>
-          <li>
-            <Link className="a-link" to="/">
-              home
-            </Link>
-          </li>
-          <li>
-            <Link className="a-link" to="/new">
-              add
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="menu-toggle">
-        <i className="fas fa-bars"></i>
-      </div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    </header>
+    <Navbar variant="dark" className="nav-general" expand="lg">
+      <Navbar.Brand>
+        {' '}
+        <Link to="/new" className="add-btn">
+          <i className="fas fa-plus"></i>
+        </Link>
+      </Navbar.Brand>
+      <Nav.Link href="/">
+        <p className="logo"></p>
+      </Nav.Link>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/">home</Nav.Link>
+          <Nav.Link href="/new">add memory</Nav.Link>
+          <Nav.Link href="/about">about</Nav.Link>
+          <Nav.Link href="/login" onClick={logout}> logout <i className="fas fa-sign-out-alt"></i></Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 

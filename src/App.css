@@ -1,60 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 
 /*-- controler ---*/
 /* *{
   outline: 1px solid red;
  } */
+.center {
+  margin: 5px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.style-seven {
+  align-items: center;
+  height: 5px;
+  width: 100px;
+  background-color: darkcyan;
+}
 
- hr.style-seven {
-  overflow: visible; /* For IE */
-  height: 30px;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px 0 0 0;
-  border-radius: 20px;
-}
-hr.style-seven:before { /* Not really supposed to work, but does */
-  display: block;
-  content: "";
-  height: 30px;
-  margin-top: -31px;
-  border-style: solid;
-  border-color: black;
-  border-width: 0 0 1px 0;
-  border-radius: 20px;
-}
 
 html, body {
   font-family: 'Josefin Sans', sans-serif;
 }
 /*--- NAVIGATION BAR ---*/
-.filler {
-  height: 45px;
-}
-header {
-  /* height: 200px; */
-  z-index: 2;
-  position: fixed;
+.nav-general {
   color: #fff;
-  top: 0;
-  left: 0;
   background: rgb(0, 98, 98);
   background: linear-gradient(
     90deg,
     rgba(0, 98, 98, 1) 0%,
     rgba(0, 139, 139, 1) 100%
   );
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: space-around;
 }
+
 .logo {
   position: absolute;
   top: 0;
-  margin-top: 10px;
+  margin-top: 17px;
   left: 50%;
   transform: translateX(-50%);
   width: 85px;
@@ -70,106 +51,31 @@ header {
   text-decoration: none;
 }
 
-header .add-btn {
+.add-btn {
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
-  line-height: 50px;
-  font-size: 24px;
   font-weight: bold;
 }
 
-header .add-btn:hover {
-  color: rgb(191, 221, 217);
+.add-btn:hover {
+  color: rgb(142, 192, 185);
   text-decoration: none;
 }
 
-header nav {
-  float: right;
-}
 
-header nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
 
-header nav ul li {
-  list-style: none;
-}
-
-header nav ul li .a-link {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  color: #fff;
-  text-decoration: none;
-  display: block;
-}
-header nav ul li .a-link:hover,
-header nav ul li .a-link.active {
-  color: #fff;
-  text-decoration: none;
-  background: rgb(0, 59, 59);
-}
-
-.img-coverphoto {
+/* .img-coverphoto {
   height: 200px;
-}
+} */
 
-.coverphoto {
+/* .coverphoto {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-}
-
-.menu-toggle {
-  color: #fff;
-  float: right;
-  line-height: 50px;
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
-}
-.menu-toggle:hover {
-  color: rgb(191, 221, 217);
-}
-
-@media (max-width: 991px) {
-  header {
-    padding: 0 20px;
-  }
-  .menu-toggle {
-    display: inline;
-  }
-  header nav {
-    color: #fff;
-    position: absolute;
-    width: 100%;
-    height: calc(100vh - 50px);
-    background: rgba(40, 98, 94, 0.924);
-    top: 50px;
-    left: -100%;
-    transition: 0.5s;
-  }
-
-  .header:hover #close:active + ul > li.a-link {
-    display: none;
-  }
-
-  header nav.active {
-    left: 0;
-  }
-  header nav ul {
-    display: block;
-    text-align: center;
-  }
-  header nav ul li .a-link {
-    border-bottom: 1px solid rgba(139, 139, 139, 0.781);
-  }
-}
-
+  align-items: center; 
+} */
 /*--- NAVIGATION BAR ---*/
 /*--- LOGIN PAGE ---*/
+
 .form-wrapper {
   background-color: rgb(235, 253, 253);
   border-radius: 15px;
@@ -227,11 +133,18 @@ header nav ul li .a-link.active {
 
 .logged-as {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  color: rgb(187, 216, 216);
-  font-size: 12px;
+  font-weight: 200;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
   margin: 5px 0 30px 0;
 }
+.fa-sign-out-alt {
+  color: #fff;
+}
+.fa-sign-out-alt:hover {
+  color: rgb(142, 192, 185);
+}
+
 .add-cover-btn {
   text-align: center;
   width: 150px;
@@ -409,7 +322,7 @@ h6 + p {
 /*--- SELING POINTS PAGE ---*/
 /*--- ABOUT PAGE ---*/
 .text-shadow {
-  text-shadow: 2px 2px 15px rgb(70, 70, 70);
+  text-shadow: 2px 2px 15px rgb(0, 0, 0);
 }
 .about-container {
   font-family: 'Josefin Sans', sans-serif;
@@ -446,6 +359,7 @@ h6 + p {
 }
 
 .dev-des-title {
+  margin-bottom: 25px;
   color: darkcyan;
   font-weight: 700;
   text-align: center;
@@ -459,6 +373,7 @@ h6 + p {
 .dev-des h1 {
   color: darkcyan;
   font-size: 19px;
+  margin-bottom: 0;
   text-align: center;
 }
 .dev-des p {

@@ -46,7 +46,7 @@ function Home() {
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
           </Link>
-          <div className="logged-as">Logged in as: {user.email} | <Link to="/login" onClick={logout}><i className="fas fa-sign-out-alt"></i></Link>
+          <div className="logged-as">logged in as: {user.email} | <Link to="/login" onClick={logout}><i className="fas fa-sign-out-alt"></i></Link>
           </div>
         </div>
       </div>
