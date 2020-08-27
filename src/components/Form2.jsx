@@ -93,7 +93,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
           : <p>Add a photo of your trip!</p>}
         <label>ADD NEW PICTURE
               <input type="text" name="newPhoto" onChange={handleChange}></input>
-          <button type="button" onClick={addPhoto}>ADD
+          <button className="save-btn" type="button" onClick={addPhoto}>
             <i className="fas fa-plus-circle" />
           </button>
         </label>

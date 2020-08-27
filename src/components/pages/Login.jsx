@@ -19,6 +19,7 @@ function Login() {
 
   return (
     <div className="page-container">
+    <p className="logo2">...</p>
         <Form className="form-control" title="Login" onSubmit={login} inputs={inputs} />
         <p>
           Don't have an account? <Link to="/signup">Sign up here</Link>

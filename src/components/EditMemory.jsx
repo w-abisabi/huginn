@@ -8,8 +8,16 @@ function Memory(props) {
 
   return (
     <div>
-      <h3>Edit Memory</h3> <Link className="cancel-link" to={`/memory/${id}`}>CANCEL</Link>
+      <div className="add-wrapper">
+      <h2>Add a new memory </h2>
+      <div className="form-add">
+       {/* <Link className="cancel-link" to={`/memory/${id}`}>CANCEL</Link> */}
       <Form id={id} httpMethod={'PUT'} path={`memories/${id}`} historyPush={`/memory/${id}`} buttonText={'SAVE CHANGES'} />
+      <Link className="back-btn" to={'/'}>
+          <i className="fas fa-arrow-left"></i> BACK
+        </Link>
+      </div>
+    </div>
     </div>
   );
 }
