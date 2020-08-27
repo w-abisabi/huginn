@@ -58,7 +58,7 @@ function Home() {
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
           </Link>
-          <div className="logged-as">Logged in as: {user.email} | <a href="https://www.beautiful.ai/-M9byEexZg7hQ6J3F30A/1" className="logout-btn" onClick={logout}>
+          <div className="logged-as">Logged in as: {user.email} | <a href="/login" className="logout-btn" onClick={logout}>
             <i className="fas fa-sign-out-alt"></i>
           </a></div>
           <button className="d-none" onClick={verifyUser}>
