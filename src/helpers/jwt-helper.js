@@ -7,7 +7,7 @@ function createJwtCookie(userId, email ) {
     process.env.JWT_SECRET_KEY +
     "\n-----END RSA PRIVATE KEY-----";
 
-  const token = jwt.sign({ userId, email }, secretKey, {
+  const token = jwt.sign({ userId, email, coverphoto }, secretKey, {
     algorithm: "RS256",
     expiresIn: "100 days"
   });
