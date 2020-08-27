@@ -26,7 +26,7 @@ const MyPlaces = () => {
           // <div className="button_mem" align="center" key={memory._id}>
           //   <Link className="memory-link" to={`/memory/${memory._id}`}>{`${memory.city}, ${memory.country}`}</Link>
           // </div>
-        )) : <p>Add some nice memories!</p>}
+        )) : <p className="memory-p">Add some nice memories!</p>}
     </div>
   );
 }
