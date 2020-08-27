@@ -6,9 +6,11 @@ import {
   Marker,
 } from 'react-google-maps';
 import fetchData from '../helpers/fetchData';
+import { v4 as uuidv4 } from 'uuid';
 
 function Map() {
-  const [places, setPlaces] = useState();
+  const [coordinatesFinal, setCoordinates] = useState([]);
+
   const fetchCities = async () => {
     try {
       const path = '/memories/cities';
@@ -33,49 +35,53 @@ function Map() {
     if (parsedResponse && parsedResponse.status === "OK") {
       let coordinates = parsedResponse.results[0].geometry.location;
       return coordinates;
-    } 
+    }
     return null;
   };
 
   useEffect(() => {
     const functionAura = async () => {
-      const locations = await fetchCities(); 
+      const locations = await fetchCities();
       console.log("locations", locations);
       const promisedPlaces = locations.map((location) => geocoder(location));
       const finalLocations = await Promise.all(promisedPlaces.filter(promise => promise !== null));
       console.log("finalLocations", finalLocations);
-      return finalLocations;
+      // return finalLocations;
+      setCoordinates(finalLocations);
     };
     functionAura();
-      // .then((locations) => {
-      //   const placesData2 = locations.map((location) => geocoder(location));
-      //   return placesData2;
-      // })
-      // .then((placesData2) => console.log('placesData2', placesData2));
+    // .then((locations) => {
+    //   const placesData2 = locations.map((location) => geocoder(location));
+    //   return placesData2;
+    // })
+    // .then((placesData2) => console.log('placesData2', placesData2));
   }, []);
 
-  const placesData = [
-    {
-      id: 1,
-      name: 'Gdansk',
-      coordinates: [54.3, 18.6],
-    },
-    {
-      id: 2,
-      name: 'Amsterdam',
-      coordinates: [52.3, 4.89],
-    },
-  ];
+  // const placesData = [
+  //   {
+  //     id: 1,
+  //     name: 'Gdansk',
+  //     coordinates: [54.3, 18.6],
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Amsterdam',
+  //     coordinates: [52.3, 4.89],
+  //   },
+  // ];
 
   return (
-    <GoogleMap defaultZoom={4} defaultCenter={{ lat: 52.3, lng: 4.89 }}>
-      {placesData.map((place) => (
-        <Marker
-          key={place.id}
-          position={{ lat: place.coordinates[0], lng: place.coordinates[1] }}
-        />
-      ))}
-    </GoogleMap>
+    <div>
+      {/* {coordinatesFinal.lng} */}
+      <GoogleMap defaultZoom={4} defaultCenter={{ lat: 52.3, lng: 4.89 }}>
+        {coordinatesFinal.map((place) => (
+          <Marker
+            key={uuidv4()}
+            position={{ lat: place.lat, lng: place.lng }}
+          />
+        ))}
+      </GoogleMap>
+    </div>
   );
 }
 
