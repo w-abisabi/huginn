@@ -51,7 +51,7 @@ function Navigation() {
         </ul>
       </nav>
       <div className="menu-toggle">
-        <i className="fas fa-ellipsis-v"></i>
+        <i className="fas fa-bars"></i>
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     </header>
