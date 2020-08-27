@@ -62,7 +62,34 @@ html, body {
   text-decoration: none;
 }
 
+/* .photos-input {
+  background-color: rgba(0, 139, 139, 0.8);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+} */
 
+.form-add {
+  background-color: rgba(0, 139, 139, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20px;
+}
+
+input {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: left;
+}
 
 /* .img-coverphoto {
   height: 200px;
@@ -77,10 +104,11 @@ html, body {
 /*--- LOGIN PAGE ---*/
 
 .form-wrapper {
-  background-color: rgb(235, 253, 253);
+  background-color: rgba(0, 139, 139, 0.8);
   border-radius: 15px;
   padding: 15px;
   margin-bottom: 15px;
+  /* height: 20vh; */
 }
 
 *:focus {
@@ -88,10 +116,24 @@ html, body {
 }
 
 .page-container {
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-family: 'Josefin Sans', sans-serif;
   padding: 10px;
-  color: darkgrey;
+  /* background-color: darkcyan; */
+  background: rgb(0,139,139);
+  background: linear-gradient(0deg, rgba(0,139,139,0.8) 50%, rgba(19,136,103,0.8) 100%);
+  color: rgb(0, 0, 0);
 }
+
+/* .login-page {
+  height: 10vh;
+} */
+
+
 
 .input-higinn {
   border: 1px solid darkcyan;
@@ -100,7 +142,7 @@ html, body {
 }
 
 .submit-btn {
-  color: darkcyan;
+  color: rgb(0, 0, 0);
   border: none;
   background: none;
   text-transform: uppercase;
@@ -461,10 +503,40 @@ h6 + p {
   margin: 40px;
 }
 
-.form-add {
-  margin: 25px;
-}
 
 .back-btn {
-  color: darkcyan;
+  color: rgb(0, 0, 0);
 }
+
+.save-btn {
+  width: 10vh;
+  border: none;
+  background: none;
+}
+
+.save-btn:hover {
+  width: 10vh;
+  border: none;
+  color: rgb(18, 69, 145);
+  text-decoration: underline;
+}
+
+.description-field {
+  width: 50vh;
+  height: 30vh;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.fa-plus-circle {
+  padding: 10px;
+}
+
+/* label {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+} */

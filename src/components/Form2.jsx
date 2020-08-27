@@ -5,7 +5,7 @@ import fetchData from '../helpers/fetchData'
 import { v4 as uuidv4 } from 'uuid';
 
 
-function Form({ id, httpMethod, path, historyPush, buttonText}) {
+function Form({ id, httpMethod, path, historyPush, buttonText }) {
   const history = useHistory();
 
   //STATE
@@ -77,7 +77,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText}) {
             <input type="text" defaultValue={memory.title} name="title" onChange={handleChange}></input>
       </label>
       <label>Description:
-            <input type="text" defaultValue={memory.description} name="description" onChange={handleChange}></input>
+            <input className="description-field" type="text" defaultValue={memory.description} name="description" onChange={handleChange}></input>
       </label>
       {/* PHOTOS */}
       <div className="photos-input">
@@ -93,7 +93,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText}) {
           : <p>Add a photo of your trip!</p>}
         <label>ADD NEW PICTURE
               <input type="text" name="newPhoto" onChange={handleChange}></input>
-          <button type="button" onClick={addPhoto}>
+          <button type="button" onClick={addPhoto}>ADD
             <i className="fas fa-plus-circle" />
           </button>
         </label>
@@ -104,7 +104,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText}) {
             <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
       </label>
       <hr />
-      <button type="submit">{buttonText}</button>
+      <button className="save-btn" type="submit"><i className="fas fa-save"></i> {buttonText}</button>
     </form>
   );
 }
