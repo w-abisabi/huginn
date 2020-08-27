@@ -10,7 +10,7 @@ body {
 }
 /*--- NAVIGATION BAR ---*/
 .filler {
-  height: 50px;
+  height: 45px;
 }
 header {
   /* height: 200px; */
@@ -32,13 +32,18 @@ header {
   justify-content: center;
   align-content: space-around;
 }
-
 .logo {
-  display: inline;
-  font-family: 'Josefin Sans', sans-serif;
-  margin-left: 115px;
-  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 0 0 90px;
+  width: 85px;
+  height: 26px;
+  background: url('./static/huginn_text_white.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .logo:hover {
   color: rgb(190, 190, 190);
   text-decoration: none;
@@ -53,7 +58,7 @@ header .add-btn {
 }
 
 header .add-btn:hover {
-  color: rgb(190, 190, 190);
+  color: rgb(191, 221, 217);
   text-decoration: none;
 }
 
@@ -75,15 +80,25 @@ header nav ul li .a-link {
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
-  color: rgb(63, 63, 63);
+  color: #fff;
   text-decoration: none;
   display: block;
 }
 header nav ul li .a-link:hover,
 header nav ul li .a-link.active {
-  color: rgb(226, 226, 226);
+  color: #fff;
   text-decoration: none;
-  background: rgb(93, 93, 93);
+  background: rgb(0, 59, 59);
+}
+
+.img-coverphoto {
+  height: 200px;
+}
+
+.coverphoto {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 .menu-toggle {
@@ -95,7 +110,7 @@ header nav ul li .a-link.active {
   display: none;
 }
 .menu-toggle:hover {
-  color: rgb(190, 190, 190);
+  color: rgb(191, 221, 217);
 }
 
 @media (max-width: 991px) {
@@ -106,10 +121,11 @@ header nav ul li .a-link.active {
     display: inline;
   }
   header nav {
+    color: #fff;
     position: absolute;
     width: 100%;
     height: calc(100vh - 50px);
-    background: rgb(255, 255, 255);
+    background: rgba(40, 98, 94, 0.924);
     top: 50px;
     left: -100%;
     transition: 0.5s;
@@ -127,7 +143,7 @@ header nav ul li .a-link.active {
     text-align: center;
   }
   header nav ul li .a-link {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(139, 139, 139, 0.781);
   }
 }
 
@@ -174,16 +190,12 @@ header nav ul li .a-link.active {
 }
 /*--- GOOGLE MAP ---*/
 /*--- COVER PAGE ---*/
-.cover {
-  
-}
-
 .cover-photo {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-  height: 500px;
+  height: 480px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -197,19 +209,18 @@ header nav ul li .a-link.active {
   font-weight: 100;
   color: rgb(187, 216, 216);
   font-size: 12px;
-  margin: 0;
+  margin: 5px 0 30px 0;
 }
-.add-cover-btn{
+.add-cover-btn {
   text-align: center;
   width: 150px;
   padding: 5px 10px;
   font-size: 10px;
   font-family: 'Josefin Sans', sans-serif;
   border-radius: 10px;
-  border: 1px solid MediumVioletRed;
   background: MediumVioletRed;
   color: #fff;
-  margin: 15px 0 40px 0;
+  margin: 5px 0 5px 0;
 }
 .add-cover-btn:hover {
   background: rgb(145, 15, 97);
@@ -229,7 +240,7 @@ header nav ul li .a-link.active {
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 26px;
   margin: 5px;
 }
 
@@ -240,69 +251,136 @@ header nav ul li .a-link.active {
   font-size: 12px;
   margin-top: 0;
   margin-bottom: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.103);
+  /* border: 1px white solid; */
+  border-radius: 5px;
+  letter-spacing: 1.5px;
 }
 
-.d-none{
+.d-none {
   display: none;
 }
 
 /*--- COVER PAGE ---*/
-.wabi-custom-nav {
-  height: 80px;
-  background-color: darkcyan;
-  border-radius: 0;
-  color: aliceblue;
-  flex-direction: row;
-}
-
-.my-memories {
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  color: rgb(93, 93, 93);
-}
-
-
-
-.home-center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.welcome + p {
-  font-family: 'Josefin Sans', sans-serif;
-  font-style: italic;
-  color: darkcyan;
-  font-weight: 100;
-  margin: 15px;
-}
-
+/*--- INTRO PAGE ---*/
 .huginn-logo {
-  height: 25px;
-  width: 25px;
-  margin: 10px;
-  background: url('./static/huginn-log.png');
+  height: 55px;
+  width: 58px;
+  margin: 15px;
+  background: url('./static/huginn_logo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+.quote {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: center;
+  width: 240px;
+}
 
-#headerContent {
-  margin: 0 auto;
-  width: 960px;
+.home-center {
+  margin: 15px 0;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+/*--- INTRO PAGE ---*/
+/*--- MY PLACES LIST ---*/
+.my-places {
+  width: 100%;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('./static/footer-bcg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.my-places h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  font-weight: 100;
+  margin: 29px 0;
 }
 
 .button_mem {
-  background-color: darkcyan;
+  text-align: center;
+  width: 90vw;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  background-color: rgba(37, 128, 109, 0.377);
   padding: 10px;
-  border-bottom: solid 2px rgb(177, 177, 177);
+  -webkit-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
+  box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
 }
 
+.button_mem:hover {
+  transition: all 0.4s;
+  cursor: pointer;
+  background-color: rgba(23, 78, 66, 0.582);
+  -webkit-box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
+  box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
+}
 .memory-link {
-  color: white;
+  color: rgb(255, 255, 255);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.memory-link:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 900;
   text-decoration: none;
+}
+
+/*--- MY PLACES LIST ---*/
+/*--- INFO PAGE ---*/
+h6 {
+  margin: 0;
+}
+.item {
+  margin-bottom: 15px;
+}
+h6 + p {
+  color: rgb(51, 51, 51);
+  margin: 0;
+  line-height: 1.1;
+  font-weight: 100;
+}
+.info-page {
+  font-family: 'Josefin Sans', sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 1fr 1fr; 
+  align-items: center;
+  justify-content: center;    
+  padding: 25px;
+  color: darkcyan;
+}
+
+.item-a .item-c .item-e{
+  grid-column: 1;
+}
+.item-b .item-d .item-f {
+  grid-column: 2;
+}
+/*--- INFO PAGE ---*/
+.my-memories {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  color: rgb(93, 93, 93);
 }
 
 .memory {
@@ -337,41 +415,6 @@ header nav ul li .a-link.active {
 /* --------------------------- */
 .button_cont {
   margin: 40px;
-}
-.example_f {
-  border-radius: 4px;
-  background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 22px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.4s;
-  cursor: pointer;
-  margin: 5px;
-}
-.example_f span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.4s;
-}
-.example_f span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.example_f:hover span {
-  padding-right: 25px;
-}
-.example_f:hover span:after {
-  opacity: 1;
-  right: 0;
 }
 
 .form-add {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MyPlaces from './MyPlaces';
-import MemoryMap from './MemoryMap';
+import MyPlaces from './MyPlaces'; 
+import SellingPoints from './SellingPoints';
+// import MemoryMap from './MemoryMap';
 import { useAuth } from '../providers/auth-provider';
 import { Link } from 'react-router-dom';
 import fetchData from '../helpers/fetchData'
@@ -25,7 +26,7 @@ function Home() {
   };
 
   const coverphoto =
-    'https://i.ibb.co/G3VyVLH/41323119-10205298342934849-1734228371589562368-n.jpg'; // change to user.coverphoto after fixing mongo
+    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80'; // change to user.coverphoto after fixing mongo
 
   useEffect(() => {
     const getNCountries = async () => {
@@ -34,7 +35,7 @@ function Home() {
     }
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
-    setNCities(cities.length);
+      setNCities(cities.length);
     }
     const getNMemories = async () => {
       const memories = await fetchData('GET', '/memories/');
@@ -51,29 +52,30 @@ function Home() {
         <div
           className="cover-photo"
           style={{ backgroundImage: `url(${coverphoto})` }}
-        >
+        > 
           <h2 className="welcome">Welcome to Huginn! </h2>
-          <h2 className="stats"><i className="fas fa-map-pin"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
-          <div className="logged-as">Logged in as: {user.email} | <a href="https://www.beautiful.ai/-M9byEexZg7hQ6J3F30A/1" className="logout-btn" onClick={logout}>
-            <i className="fas fa-sign-out-alt"></i>
-          </a></div>
+          <h2 className="stats"><i className="fas fa-passport"></i> countries: {nCountries} | cities: {nCities} | memories: {nMemories} </h2>
           <Link to="/new" className="add-cover-btn">
             ADD MEMORY
           </Link>
+          <div className="logged-as">Logged in as: {user.email} | <a href="/login" className="logout-btn" onClick={logout}>
+            <i className="fas fa-sign-out-alt"></i>
+          </a></div>
           <button className="d-none" onClick={verifyUser}>
             Verify user
           </button>
           {userInfo && <p>User ok: {userInfo}</p>}
         </div>
       </div>
+      <SellingPoints />
       <div className="home-center">
         <div className="huginn-logo"> </div>
-      </div>
-      <p>
+      <p className="quote">
         "He sends them out in the morning to fly around the whole world, and by
         breakfast they are back again."
       </p>
-      <MemoryMap />
+      </div>
+      {/* <MemoryMap /> */}
       <MyPlaces />
     </div>
   );

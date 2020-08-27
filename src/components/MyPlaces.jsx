@@ -15,8 +15,7 @@ const MyPlaces = () => {
 
   return (
     <div className="my-places">
-      <h2 className="my-places">Where I've been </h2>
-      <hr />
+      <h2>I have been here</h2>
 
       {cities.length
         ? cities.map(city => (
