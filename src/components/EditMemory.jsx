@@ -23,9 +23,11 @@ function Memory(props) {
     });
   }
 
-  useEffect( () => {
-    const getMemory = async() => {
-      setMemory(await fetchData('GET', `/memories/${id}`));
+  useEffect(() => {
+    const getMemory = async () => {
+      const fetchedMemory = await fetchData('GET', `memories/${id}`);
+      console.log('memoryyyy', fetchedMemory);
+      setMemory(fetchedMemory[0]);
     }
     getMemory();
   }, [id]);
@@ -40,7 +42,7 @@ function Memory(props) {
       body: JSON.stringify(memory),
       method: 'PUT',
     });
-    history.push('/');
+    history.push(`/memory/${id}`);
   }
 
   return (
@@ -56,11 +58,11 @@ function Memory(props) {
             <input type="text" defaultValue={memory.title} name="title" onChange={handleChange}></input>
           </label>
           <label>Description:
-            <input type="text" defaultValue={memory.description} name="title" onChange={handleChange}></input>
+            <input type="text" defaultValue={memory.description} name="description" onChange={handleChange}></input>
           </label>
           <p>(photos here)</p>
           <h3>Location:</h3>
-          <DropdownCountries onSelectCountry={handleChange} />
+          <DropdownCountries country={memory.country} onSelectCountry={handleChange} />
           <label>City:
             <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
           </label>

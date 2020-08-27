@@ -4,10 +4,10 @@ const uri = process.env.ATLAS_URI;
 const db = mongoose.connection;
 
 
-const getAll = async () => {
+const getAll = async (email) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    const allMemories = await Memory.find();
+    const allMemories = await Memory.find({username: email});
     db.close();
     return {
       statusCode: 200,
@@ -22,10 +22,10 @@ const getAll = async () => {
   }
 };
 
-const getJustOne = async (id) => {
+const getJustOne = async (email, id) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    const memoryById = await Memory.findById(id);
+    const memoryById = await Memory.find({username: email, _id: id});
     db.close();
     return {
       statusCode: 200,
@@ -40,7 +40,7 @@ const getJustOne = async (id) => {
   }
 };
 
-const getByCategory = async (category) => {
+const getByCategory = async (email, category) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
 
   function onlyUnique(value, index, self) {
@@ -48,7 +48,7 @@ const getByCategory = async (category) => {
   }
 
   try {
-    const allMemories = await Memory.find();
+    const allMemories = await Memory.find({username: email});
     const cities = allMemories.map(memory => memory[category]);
     const uniqueCities = cities.filter(onlyUnique);
     db.close();
@@ -65,10 +65,10 @@ const getByCategory = async (category) => {
   }
 };
 
-const getByCity = async (city) => {
+const getByCity = async (email, city) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    const memoriesByCity = await Memory.find({ city });
+    const memoriesByCity = await Memory.find({ username: email, city });
     db.close();
     return {
       statusCode: 200,
@@ -83,7 +83,7 @@ const getByCity = async (city) => {
   }
 };
 
-const createNewMemory = async (reqBody) => {
+const createNewMemory = async (email, reqBody) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   if (!reqBody) {
     db.close();
@@ -101,7 +101,8 @@ const createNewMemory = async (reqBody) => {
       city,
       country,
       date,
-      photos
+      photos,
+      username: email
     });
     await newMemory.save();
     db.close();
@@ -118,7 +119,7 @@ const createNewMemory = async (reqBody) => {
   }
 };
 
-const updateMemory = async (id, reqBody) => {
+const updateMemory = async (email, id, reqBody) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   if (!reqBody) {
     db.close();
@@ -129,7 +130,7 @@ const updateMemory = async (id, reqBody) => {
   }
   try {
     const { title, description, city, country, date, photos } = JSON.parse(reqBody);
-    const updatedMemory = await Memory.updateOne({ _id: id }, {
+    const updatedMemory = await Memory.updateOne({ username: email, _id: id }, {
       title,
       description,
       city,
@@ -154,10 +155,10 @@ const updateMemory = async (id, reqBody) => {
   }
 };
 
-const deleteMemory = async (id) => {
+const deleteMemory = async (email, id) => {
   await mongoose.connect(uri, { useNewUrlParser: true });
   try {
-    await Memory.deleteOne({ _id: id });
+    await Memory.deleteOne({ username: email, _id: id });
     db.close();
     return {
       statusCode: 200,
