@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GoogleMap,
   withScriptjs,
@@ -8,6 +8,7 @@ import {
 import fetchData from '../helpers/fetchData';
 
 function Map() {
+  // const [coordinatesFinal, setCoordinatesFinal ]= useState();
   const fetchCities = async () => {
     try {
       const path = '/memories/cities';
@@ -43,8 +44,10 @@ function Map() {
       const promisedPlaces = locations.map((location) => geocoder(location));
       const finalLocations = await Promise.all(promisedPlaces.filter(promise => promise !== null));
       console.log("finalLocations", finalLocations);
-      return finalLocations;
+      // return finalLocations;
+      // setCoordinatesFinal(finalLocations);
     };
+
     functionAura();
       // .then((locations) => {
       //   const placesData2 = locations.map((location) => geocoder(location));
