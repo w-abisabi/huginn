@@ -77,10 +77,6 @@ header .add-btn:hover {
   text-decoration: none;
 }
 
-header nav {
-  float: right;
-}
-
 header nav ul {
   margin: 0;
   padding: 0;
@@ -128,39 +124,6 @@ header nav ul li .a-link.active {
   color: rgb(191, 221, 217);
 }
 
-@media (max-width: 991px) {
-  header {
-    padding: 0 20px;
-  }
-  .menu-toggle {
-    display: inline;
-  }
-  header nav {
-    color: #fff;
-    position: absolute;
-    width: 100%;
-    height: calc(100vh - 50px);
-    background: rgba(40, 98, 94, 0.924);
-    top: 50px;
-    left: -100%;
-    transition: 0.5s;
-  }
-
-  .header:hover #close:active + ul > li.a-link {
-    display: none;
-  }
-
-  header nav.active {
-    left: 0;
-  }
-  header nav ul {
-    display: block;
-    text-align: center;
-  }
-  header nav ul li .a-link {
-    border-bottom: 1px solid rgba(139, 139, 139, 0.781);
-  }
-}
 
 /*--- NAVIGATION BAR ---*/
 /*--- LOGIN PAGE ---*/
