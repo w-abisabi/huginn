@@ -315,7 +315,7 @@ header nav ul li .a-link.active {
   width: 90vw;
   margin-bottom: 15px;
   border-radius: 15px;
-  background-color: rgba(146, 200, 189, 0.267);
+  background-color: rgba(37, 128, 109, 0.377);
   padding: 10px;
   -webkit-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
@@ -325,21 +325,21 @@ header nav ul li .a-link.active {
 .button_mem:hover {
   transition: all 0.4s;
   cursor: pointer;
-  background-color: rgba(139, 177, 169, 0.527);
+  background-color: rgba(23, 78, 66, 0.582);
   -webkit-box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
   box-shadow: 0px -15px 31px -9px rgba(0, 0, 0, 0.38);
 }
 .memory-link {
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
   text-decoration: none;
 }
 
 .memory-link:hover {
-  color: white;
   cursor: pointer;
+  color: rgb(255, 255, 255);
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 900;
   text-decoration: none;
