@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 
 /*-- controler ---*/
 /* *{
@@ -133,11 +133,18 @@ html, body {
 
 .logged-as {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
-  color: rgb(187, 216, 216);
-  font-size: 12px;
+  font-weight: 200;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
   margin: 5px 0 30px 0;
 }
+.fa-sign-out-alt {
+  color: #fff;
+}
+.fa-sign-out-alt:hover {
+  color: rgb(142, 192, 185);
+}
+
 .add-cover-btn {
   text-align: center;
   width: 150px;
