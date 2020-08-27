@@ -48,6 +48,7 @@ function Memory(props) {
                       className="artist-img-big"
                       src={photo}
                       alt="my memory"
+                      width="300px"
                       key={uuidv4()} />))
                   : null}
               </div>
