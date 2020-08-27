@@ -14,6 +14,7 @@ import OnePlace from './components/OnePlace';
 import Memory from './components/Memory';
 import About from './components/About'
 import EditMemory from './components/EditMemory';
+import Footer from './components/Footer';
 
 const App = () => {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ const App = () => {
           <Route component={Memory} path="/memory/:id"></Route>
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   ) : (
     <UnauthenticatedApp />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MyPlaces from './MyPlaces'; 
 import SellingPoints from './SellingPoints';
-import MemoryMap from './MemoryMap';
+// import MemoryMap from './MemoryMap';
 import { useAuth } from '../providers/auth-provider';
 import { Link } from 'react-router-dom';
 import fetchData from '../helpers/fetchData'
@@ -68,6 +68,7 @@ function Home() {
         </div>
       </div>
       <SellingPoints />
+      <hr />
       <div className="home-center">
         <div className="huginn-logo"> </div>
       <p className="quote">
@@ -75,7 +76,7 @@ function Home() {
         breakfast they are back again."
       </p>
       </div>
-      <MemoryMap />
+      {/* <MemoryMap /> */}
       <MyPlaces />
     </div>
   );

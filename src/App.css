@@ -467,6 +467,37 @@ h6 + p {
   text-align: center;
 }
 /*--- ABOUT PAGE ---*/
+/*--- FOOTER ---*/
+.footer-bcg {
+  color: #fff;
+  padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 40px;
+  background: rgb(0, 98, 98);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 98, 1) 0%,
+    rgba(0, 139, 139, 1) 100%
+  );
+}
+.footerlink {
+  text-align: center;
+  margin: 0;
+}
+
+.footerlink a{
+  color: #fff;
+  font-size: 12px;
+  margin: 0;
+}
+
+.footerlink a:hover {
+  color: rgb(191, 221, 217);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*--- FOOTER ---*/
 .my-memories {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
@@ -498,13 +529,6 @@ h6 + p {
   font-size: 25px;
 }
 
-.artist-img-big {
-  border-radius: 0 25px 0 25px;
-  margin: 0 15px 0 0;
-  object-fit: cover;
-  width: 280px;
-  height: auto;
-}
 
 /* --------------------------- */
 .button_cont {
