@@ -17,8 +17,15 @@
   background-color: darkcyan;
 }
 
-
-html, body {
+.style-seven-2 {
+  align-items: center;
+  margin-top: 120px;
+  height: 5px;
+  width: 100px;
+  background-color: darkcyan;
+}
+html,
+body {
   font-family: 'Josefin Sans', sans-serif;
 }
 /*--- NAVIGATION BAR ---*/
@@ -105,7 +112,7 @@ input {
 form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: left;
 }
 
@@ -134,7 +141,7 @@ form {
 }
 
 .page-container {
-  height: 100vh; 
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,16 +149,18 @@ form {
   font-family: 'Josefin Sans', sans-serif;
   padding: 10px;
   /* background-color: darkcyan; */
-  background: rgb(0,139,139);
-  background: linear-gradient(0deg, rgba(0,139,139,0.8) 50%, rgba(19,136,103,0.8) 100%);
+  background: rgb(0, 139, 139);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 139, 139, 0.8) 50%,
+    rgba(19, 136, 103, 0.8) 100%
+  );
   color: #fff;
 }
 
 /* .login-page {
   height: 10vh;
 } */
-
-
 
 .input-higinn {
   border: 1px solid darkcyan;
@@ -221,11 +230,41 @@ form {
   text-decoration: none;
   color: #fff;
 }
+.img-edit{
+  border-radius: 15px;
+  width: 280px;
+
+}
+
+.fa-minus-circle {
+  color: rgb(255, 62, 56);
+  margin-left: 24px;
+  font-size: 28px;
+}
+.fa-minus-circle:hover {
+  color: rgb(173, 34, 29);
+  margin-left: 24px;
+  font-size: 28px;
+}
 .sign-up-here {
   color: rgb(196, 53, 143);
 }
+.filler-2 {
+  color: white;
+}
+.artist-img-big {
+  width: 100%;
+  max-height: 170px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .add-cover-btn-2 {
+  font-family: 'Josefin Sans', sans-serif !important;
   text-align: center;
   width: 150px;
   border: none;
@@ -234,12 +273,77 @@ form {
   font-family: 'Josefin Sans', sans-serif;
   border-radius: 10px;
   background: MediumVioletRed;
-  color: #fff;
+  color: #fff; 
   margin: 15px 0 5px 0;
 }
 
 .add-cover-btn-2:hover {
   background: rgb(145, 15, 97);
+  text-decoration: none;
+  color: #fff;
+}
+
+.back-btn-one {
+  text-align: center;
+  width: 150px;
+  border: none;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 10px;
+  background: darkcyan;
+  color: #fff;
+  margin: 5px 0 5px 0;
+}
+
+.edit-btn {
+  font-family: 'Josefin Sans', sans-serif !important;
+  text-align: center;
+  width: 150px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 10px;
+  background: rgb(255, 157, 0);
+  color: #fff;
+  margin: 15px 0 5px 0;
+}
+.edit-btn :hover {
+  background: rgb(211, 130, 0);
+  text-decoration: none;
+  color: #fff;
+}
+
+.delete-btn {
+  font-family: 'Josefin Sans', sans-serif !important;
+  text-align: center;
+  width: 150px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 10px;
+  background: rgb(255, 62, 56);
+  color: #fff;
+  margin: 15px 0 5px 0;
+}
+.delete-btn :hover {
+  background: rgb(199, 36, 30);
+  text-decoration: none;
+  color: #fff;
+}
+.separator {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+
+.back-btn-one:hover {
+  background: rgb(0, 88, 88);
   text-decoration: none;
   color: #fff;
 }
@@ -326,7 +430,7 @@ form {
   font-size: 45px;
   font-weight: 100;
   margin: 29px 0;
-  color: white
+  color: white;
 }
 
 .memory-p {
@@ -411,7 +515,7 @@ h6 + p {
 .about-container {
   font-family: 'Josefin Sans', sans-serif;
 }
-.about-intro{
+.about-intro {
   color: white;
   text-shadow: 2px 2px 15px rgb(70, 70, 70);
   padding: 25px;
@@ -429,7 +533,7 @@ h6 + p {
 .about-intro section {
   margin-top: 22px;
   font-size: 21px;
-  line-height: 1.1; 
+  line-height: 1.1;
 }
 
 .about-intro p {
@@ -495,7 +599,7 @@ h6 + p {
   margin: 0;
 }
 
-.footerlink a{
+.footerlink a {
   color: #fff;
   font-size: 12px;
   margin: 0;
@@ -546,12 +650,10 @@ h6 + p {
   font-size: 25px;
 }
 
-
 /* --------------------------- */
 .button_cont {
   margin: 40px;
 }
-
 
 .back-btn {
   color: #fff;
@@ -565,7 +667,6 @@ h6 + p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 }
 
 .save-btn {
@@ -575,16 +676,20 @@ h6 + p {
   border: none;
 }
 
+.give-it-a-blue {
+  margin: 15px;
+  color: cornflowerblue;
+}
+
 .add-i-btn {
   font-size: 28px;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 157, 0);;
   width: 10vh;
   border: none;
 }
 .add-i-btn:hover {
-  color: rgb(142, 192, 185);
+  color: rgb(177, 109, 0);;
 }
-
 
 .save-btn:hover {
   width: 10vh;
@@ -615,13 +720,13 @@ h6 + p {
   border-radius: 4px;
 }
 
-.fa-eye {
+/* .fa-eye {
   border: 1px solid darkcyan;
   border-radius: 5px;
   padding: 15px;
   margin: 20px;
   color: darkcyan;
-}
+} */
 
 button {
   border: none;
@@ -641,8 +746,12 @@ button {
 /*-- NEW ---*/
 .add-wrapper {
   padding: 20px;
-  background: rgb(0,139,139);
-  background: linear-gradient(0deg, rgba(0,139,139,0.8) 50%, rgba(19,136,103,0.8) 100%);
+  background: rgb(0, 139, 139);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 139, 139, 0.8) 50%,
+    rgba(19, 136, 103, 0.8) 100%
+  );
 }
 
 .add-wrapper h2 {

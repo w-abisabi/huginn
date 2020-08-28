@@ -16,33 +16,50 @@ function OnePlace(props) {
 
   return (
     <div className="memories-by-city">
-    <div className="center">
-      <strong>{city}</strong> 
-      <div>
-        <div className="style-seven"></div>
+      <div className="center">
+        <strong>{city}</strong>
+        <div>
+          <div className="style-seven"></div>
+        </div>
       </div>
-
-    </div>
-      {memoriesByCity.length
-        ? memoriesByCity.map(memory => (
-          <div className="mapped-place" key={uuidv4()}>
-            
+      {memoriesByCity.length ? (
+        memoriesByCity.map((memory) => (
+         
+          <div className="mapped-place" key={uuidv4()} >
             <p className="date">{memory.date}</p>
             <div className="memory-ttl">{memory.title}</div>
             <img
               className="artist-img-big"
               src={memory.photos[0]}
               width="150px"
-              alt="my memory" />
-              <Link className="back-btn" to={`/memory/${memory._id}`}>
-              <i className="fas fa-eye">SEE MORE</i> 
-        </Link>
+              alt="my memory"
+            />
+            <div className="center">
+
+            <Link className="add-cover-btn-2" to={`/memory/${memory._id}`}>
+            <i class="far fa-eye"></i> go to memory
+            </Link>
+
+            </div>
           </div>
         ))
-        : <p>Loading...</p>}
-      <Link className="back-btn" to={'/'}>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <div className="filler-2">...</div>
+      <Link className="back-btn-one" to={'/'}>
         <i className="fas fa-arrow-left"></i> BACK
-        </Link>
+      </Link>
+      <div className="center">
+        <div className="style-seven-2"></div>
+      </div>
+      <div className="home-center">
+        <div className="huginn-logo"> </div>
+        <p className="quote">
+          "He sends them out in the morning to fly around the whole world, and by
+          breakfast they are back again."
+      </p>
+      </div>
     </div>
   );
 }

@@ -105,7 +105,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
           memory.photos.map((photo, i) => {
             return (
               <div key={uuidv4()}>
-                <img src={photo} alt="memory" width="200px" />
+                <img className="img-edit" src={photo} alt="memory" width="200px" />
                 <i
                   className="fas fa-minus-circle"
                   data-index={i}

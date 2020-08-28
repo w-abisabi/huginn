@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import fetchData from '../helpers/fetchData'
+import fetchData from '../helpers/fetchData';
 import { v4 as uuidv4 } from 'uuid';
-
 
 function Memory(props) {
   const [memory, setMemory] = useState();
@@ -25,42 +24,65 @@ function Memory(props) {
       },
     });
     console.log(deleted);
-  }
+  };
 
   return (
     <div>
       <div className="memory">
-        {memory
-          ? (
+        {memory ? (
+          <div>
+            
+            <p className="date">{memory.date}</p>
+            <h2 className="memory-ttl">{memory.title}</h2>
             <div>
-              <Link className="edit-btn" to={'/'} onClick={deleteMemory}>
-                <i className="fas fa-trash"></i> DELETE
-              </Link>
-              <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
-                <i className="fas fa-edit"></i> EDIT
-              </Link>
-              <p className="date">{memory.date}</p>
-              <h2 className="memory-ttl">{memory.title}</h2>
-              <div>
-                {memory.photos
-                  ? memory.photos.map(photo => (
+              {memory.photos
+                ? memory.photos.map((photo) => (
                     <img
                       className="artist-img-big"
                       src={photo}
                       alt="my memory"
                       width="300px"
-                      key={uuidv4()} />))
-                  : null}
-              </div>
-              <hr />
-              <h3>{memory.city}, {memory.country}</h3>
-              <p>{memory.description}</p>
+                      key={uuidv4()}
+                    />
+                  ))
+                : null}
             </div>
-          )
-          : null}
-        <Link className="back-btn" to={memory ? `/city/${memory.city}` : '/'}>
+            {/* <div className="center">
+              <div className="style-seven"></div>
+            </div> */}
+            <h2 classNeme="give-it-a-blue">
+           
+
+
+              {memory.city}, {memory.country}
+  
+            </h2>
+            <p>{memory.description}</p>
+            <div className="separator">
+            <Link className="delete-btn" to={'/'} onClick={deleteMemory}>
+              <i className="fas fa-trash"></i> DELETE
+            </Link>
+            <Link className="edit-btn" to={`/memory/edit/${memory._id}`}>
+              <i className="fas fa-edit"></i> EDIT
+            </Link>
+            </div>
+          </div>
+        ) : null}
+        <div> 
+        <Link className="back-btn-one" to={memory ? `/city/${memory.city}` : '/'}>
           <i className="fas fa-arrow-left"></i> BACK
         </Link>
+        <div className="center">
+        <div className="style-seven"></div>
+      </div>
+        <div className="home-center">
+        <div className="huginn-logo"> </div>
+        <p className="quote">
+          "He sends them out in the morning to fly around the whole world, and
+          by breakfast they are back again."
+        </p>
+      </div>
+        </div>
       </div>
     </div>
   );

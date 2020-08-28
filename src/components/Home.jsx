@@ -26,7 +26,7 @@ function Home() {
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
       // setCountriesList(cities);
-      setMemoryMapHTML(<MemoryMap countriesList={cities}/>) // <<<<<<<<<<<<<<<<<
+      setMemoryMapHTML(<MemoryMap countriesList={cities}/>) 
       setNCities(cities.length);
     }
     const getNMemories = async () => {
@@ -66,13 +66,8 @@ function Home() {
           breakfast they are back again."
       </p>
       </div>
-<<<<<<< HEAD
-      <MemoryMap />
-=======
       {memoryMapHTML}
-      
-      {/* <MemoryMap countriesList={countriesList}/> */}
->>>>>>> master
+      {/* <MemoryMap /> */}
       <MyPlaces />
     </div>
   );

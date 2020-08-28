@@ -9,7 +9,10 @@ function Memory(props) {
   return (
     <div>
       <div className="add-wrapper">
-      <h2>Add a new memory </h2>
+      <h2>Edit memory </h2>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <div className="form-add">
        {/* <Link className="cancel-link" to={`/memory/${id}`}>CANCEL</Link> */}
       <Form id={id} httpMethod={'PUT'} path={`memories/${id}`} historyPush={`/memory/${id}`} buttonText={'SAVE CHANGES'} />
