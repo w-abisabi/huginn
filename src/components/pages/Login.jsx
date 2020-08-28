@@ -22,7 +22,7 @@ function Login() {
     <p className="logo2">...</p>
         <Form className="form-control" title="Login" onSubmit={login} inputs={inputs} />
         <p>
-          Don't have an account? <Link to="/signup">Sign up here</Link>
+          Don't have an account? <Link className="sign-up-here" to="/signup">Sign up here</Link>
         </p>
       </div>
   );

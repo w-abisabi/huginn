@@ -16,13 +16,19 @@ function OnePlace(props) {
 
   return (
     <div className="memories-by-city">
-      <h2>My memories in <strong>{city}</strong> </h2>
+    <div className="center">
+      <strong>{city}</strong> 
+      <div>
+        <div className="style-seven"></div>
+      </div>
+
+    </div>
       {memoriesByCity.length
         ? memoriesByCity.map(memory => (
-          <div key={uuidv4()}>
+          <div className="mapped-place" key={uuidv4()}>
             
             <p className="date">{memory.date}</p>
-            <h2 className="memory-ttl">{memory.title}</h2>
+            <div className="memory-ttl">{memory.title}</div>
             <img
               className="artist-img-big"
               src={memory.photos[0]}
@@ -31,7 +37,6 @@ function OnePlace(props) {
               <Link className="back-btn" to={`/memory/${memory._id}`}>
               <i className="fas fa-eye">SEE MORE</i> 
         </Link>
-            <hr />
           </div>
         ))
         : <p>Loading...</p>}

@@ -9,6 +9,9 @@ const AddNewMemory = () => {
   return (
     <div className="add-wrapper">
       <h2>Add a new memory </h2>
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <div className="form-add">
         <Form httpMethod={'POST'} path={`memories/`} historyPush={'/'} buttonText={'SAVE'} />
         <Link className="back-btn" to={'/'}>

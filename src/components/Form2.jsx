@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import DropdownCountries from './DropdownCountries';
-import fetchData from '../helpers/fetchData'
+import fetchData from '../helpers/fetchData';
 import { v4 as uuidv4 } from 'uuid';
-
 
 function Form({ id, httpMethod, path, historyPush, buttonText }) {
   const history = useHistory();
@@ -25,7 +24,7 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
         const fetchedMemory = await fetchData('GET', `memories/${id}`);
         setMemory(fetchedMemory[0]);
       }
-    }
+    };
     getMemory();
   }, [id]);
 
@@ -41,9 +40,9 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
       method: httpMethod,
     });
 
-    console.log('RESPONSE', response)
+    console.log('RESPONSE', response);
     history.push(historyPush);
-  }
+  };
 
   //CHANGE FUNCTIONS
   function handleChange(e) {
@@ -55,13 +54,13 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
   }
 
   function addPhoto() {
-    const newArray = { ...memory, photos: [...memory.photos, memory.newPhoto] }
+    const newArray = { ...memory, photos: [...memory.photos, memory.newPhoto] };
     setMemory(newArray);
   }
 
   function deletePhoto(e) {
     const index = parseInt(e.target.dataset.index);
-    const newPhotoArray = memory.photos.filter((photo, i) => i !== (index));
+    const newPhotoArray = memory.photos.filter((photo, i) => i !== index);
     const newArray = { ...memory, photos: newPhotoArray };
     setMemory(newArray);
   }
@@ -70,41 +69,89 @@ function Form({ id, httpMethod, path, historyPush, buttonText }) {
   return (
     <form onSubmit={onSubFunction}>
       <hr />
-      <label>Date:
-              <input type="date" defaultValue={memory.date} name="date" onChange={handleChange}></input>
+      <label>
+        Date:
+        <input
+          type="date"
+          className="text-field"
+          defaultValue={memory.date}
+          name="date"
+          onChange={handleChange}
+        ></input>
       </label>
-      <label>Title:
-            <input type="text" defaultValue={memory.title} name="title" onChange={handleChange}></input>
+      <label>
+        Title:
+        <input
+          type="text"
+          className="text-field"
+          defaultValue={memory.title}
+          name="title"
+          onChange={handleChange}
+        ></input>
       </label>
-      <label>Description:
-            <input className="description-field" type="text" defaultValue={memory.description} name="description" onChange={handleChange}></input>
+      <label>
+        Description:
+        <textarea
+          className="description-field"
+          type="text"
+          defaultValue={memory.description}
+          name="description"
+          onChange={handleChange}
+        ></textarea>
       </label>
       {/* PHOTOS */}
       <div className="photos-input">
-        {memory.photos.length
-          ? memory.photos.map((photo, i) => {
+        {memory.photos.length ? (
+          memory.photos.map((photo, i) => {
             return (
               <div key={uuidv4()}>
                 <img src={photo} alt="memory" width="200px" />
-                <i className="fas fa-minus-circle" data-index={i} onClick={deletePhoto}></i>
+                <i
+                  className="fas fa-minus-circle"
+                  data-index={i}
+                  onClick={deletePhoto}
+                ></i>
               </div>
-            )
+            );
           })
-          : <p>Add a photo of your trip!</p>}
-        <label>ADD NEW PICTURE
-              <input type="text" name="newPhoto" onChange={handleChange}></input>
-          <button className="save-btn" type="button" onClick={addPhoto}>
-            <i className="fas fa-plus-circle" />
-          </button>
-        </label>
+        ) : (
+          <p>Add a photo of your trip!</p>
+        )}
+          <label>
+            Add new picture:
+        <div>
+            <input
+              type="text"
+              className="text-field-2"
+              name="newPhoto"
+              onChange={handleChange}
+            ></input>
+            <button className="add-i-btn" type="button" onClick={addPhoto}>
+              <i className="fas fa-plus-circle" />
+            </button>
+        </div>
+          </label>
       </div>
       <h3>Location:</h3>
-      <DropdownCountries country={memory.country} onSelectCountry={handleChange} />
-      <label>City:
-            <input type="text" defaultValue={memory.city} name="city" onChange={handleChange}></input>
+      <DropdownCountries
+        country={memory.country}
+        onSelectCountry={handleChange}
+      />
+      <label >
+        City:
+        <input
+          type="text"
+          className="text-field"
+          defaultValue={memory.city}
+          name="city"
+          onChange={handleChange}
+        ></input>
+        <div className="center">
+        <button className="add-cover-btn-2" type="submit">
+          <i className="fas fa-save"></i> {buttonText}
+        </button>
+        </div>
       </label>
-      <hr />
-      <button className="save-btn" type="submit"><i className="fas fa-save"></i> {buttonText}</button>
     </form>
   );
 }

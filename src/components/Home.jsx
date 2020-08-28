@@ -56,7 +56,9 @@ function Home() {
         </div>
       </div>
       <SellingPoints />
-      <hr />
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <div className="home-center">
         <div className="huginn-logo"> </div>
         <p className="quote">
@@ -65,6 +67,7 @@ function Home() {
       </p>
       </div>
       {memoryMapHTML}
+      
       {/* <MemoryMap countriesList={countriesList}/> */}
       <MyPlaces />
     </div>
