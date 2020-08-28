@@ -36,7 +36,9 @@ function Form(props) {
               />
             </label>
           ))}
-          <input className="submit-btn" type="submit" value={`OK${loading ? "loading" : ""}`} />
+          <div className="center">
+          <input className="add-cover-btn-2" type="submit" value={`Submit${loading ? "ing" : ""}`} />
+          </div>
         </fieldset>
       </form>
     </>

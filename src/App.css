@@ -32,6 +32,14 @@ html, body {
   );
 }
 
+.nav-link:active {
+  color: white;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+}
+
 .logo {
   position: absolute;
   top: 0;
@@ -40,6 +48,16 @@ html, body {
   transform: translateX(-50%);
   width: 85px;
   height: 26px;
+  background: url('./static/huginn_text_white.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo2 {
+  width: 175px;
+  margin-bottom: 70px;
+  height: 56px;
   background: url('./static/huginn_text_white.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -62,7 +80,34 @@ html, body {
   text-decoration: none;
 }
 
+/* .photos-input {
+  background-color: rgba(0, 139, 139, 0.8);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+} */
 
+.form-add {
+  /* background-color: rgba(0, 139, 139, 0.8); */
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  color: #fff;
+}
+
+input {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: left;
+}
 
 /* .img-coverphoto {
   height: 200px;
@@ -77,10 +122,11 @@ html, body {
 /*--- LOGIN PAGE ---*/
 
 .form-wrapper {
-  background-color: rgb(235, 253, 253);
+  background-color: rgba(0, 139, 139, 0.8);
   border-radius: 15px;
   padding: 15px;
   margin-bottom: 15px;
+  /* height: 20vh; */
 }
 
 *:focus {
@@ -88,10 +134,24 @@ html, body {
 }
 
 .page-container {
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-family: 'Josefin Sans', sans-serif;
   padding: 10px;
-  color: darkgrey;
+  /* background-color: darkcyan; */
+  background: rgb(0,139,139);
+  background: linear-gradient(0deg, rgba(0,139,139,0.8) 50%, rgba(19,136,103,0.8) 100%);
+  color: #fff;
 }
+
+/* .login-page {
+  height: 10vh;
+} */
+
+
 
 .input-higinn {
   border: 1px solid darkcyan;
@@ -100,7 +160,7 @@ html, body {
 }
 
 .submit-btn {
-  color: darkcyan;
+  color: rgb(0, 0, 0);
   border: none;
   background: none;
   text-transform: uppercase;
@@ -161,6 +221,28 @@ html, body {
   text-decoration: none;
   color: #fff;
 }
+.sign-up-here {
+  color: rgb(196, 53, 143);
+}
+
+.add-cover-btn-2 {
+  text-align: center;
+  width: 150px;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 10px;
+  background: MediumVioletRed;
+  color: #fff;
+  margin: 15px 0 5px 0;
+}
+
+.add-cover-btn-2:hover {
+  background: rgb(145, 15, 97);
+  text-decoration: none;
+  color: #fff;
+}
 
 .logout-btn {
   font-family: 'Josefin Sans', sans-serif;
@@ -207,6 +289,7 @@ html, body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .quote {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 200;
@@ -240,6 +323,7 @@ html, body {
 .my-places h2 {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
+  font-size: 45px;
   font-weight: 100;
   margin: 29px 0;
   color: white
@@ -258,7 +342,7 @@ html, body {
   width: 90vw;
   margin-bottom: 15px;
   border-radius: 15px;
-  background-color: rgba(37, 128, 109, 0.377);
+  background-color: rgba(16, 136, 110, 0.507);
   padding: 10px;
   -webkit-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 0px 14px 27px -12px rgba(0, 0, 0, 0.38);
@@ -441,11 +525,18 @@ h6 + p {
 
 .date {
   color: lightslategray;
-  font-size: 10px;
+  font-size: 14px;
+}
+.mapped-place {
+  padding: 7px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  background: rgba(24, 115, 131, 0.13);
 }
 
 .memory-ttl {
   padding: 10px;
+  font-size: 30px;
   font-weight: 300;
   color: cornflowerblue;
 }
@@ -461,10 +552,118 @@ h6 + p {
   margin: 40px;
 }
 
-.form-add {
-  margin: 25px;
-}
 
 .back-btn {
+  color: #fff;
+}
+.back-btn:hover {
+  background: rgb(184, 247, 255);
+}
+
+.label-with-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.save-btn {
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+  width: 10vh;
+  border: none;
+}
+
+.add-i-btn {
+  font-size: 28px;
+  color: rgb(255, 255, 255);
+  width: 10vh;
+  border: none;
+}
+.add-i-btn:hover {
+  color: rgb(142, 192, 185);
+}
+
+
+.save-btn:hover {
+  width: 10vh;
+  border: none;
+  color: rgb(18, 69, 145);
+  text-decoration: underline;
+}
+
+.description-field {
+  width: 100%;
+  height: 150px;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  border: 3px solid darkcyan;
+  border-radius: 4px;
+}
+.text-field {
+  width: 100%;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  border: 3px solid darkcyan;
+  border-radius: 4px;
+}
+.text-field-2 {
+  width: 280px;
+  box-sizing: border-box;
+  border: 3px solid darkcyan;
+  border-radius: 4px;
+}
+
+.fa-eye {
+  border: 1px solid darkcyan;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px;
+  color: darkcyan;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.fa-plus-circle {
+  padding: 10px;
+}
+
+/* label {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+} */
+
+/*-- NEW ---*/
+.add-wrapper {
+  padding: 20px;
+  background: rgb(0,139,139);
+  background: linear-gradient(0deg, rgba(0,139,139,0.8) 50%, rgba(19,136,103,0.8) 100%);
+}
+
+.add-wrapper h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  color: white;
+}
+
+.memories-by-city {
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 15px;
+}
+
+.memories-by-city h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 200;
+  padding: 25px;
+}
+
+.memories-by-city strong {
+  margin: 0;
+  font-size: 29px;
   color: darkcyan;
 }

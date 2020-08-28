@@ -12,6 +12,8 @@ function Home() {
   const [nCities, setNCities] = useState();
   const [nCountries, setNCountries] = useState();
   const [nMemories, setNMemories] = useState();
+  // const [countriesList, setCountriesList] = useState([]);
+  const [memoryMapHTML, setMemoryMapHTML] = useState();
 
   const coverphoto =
     'https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80'; // change to user.coverphoto after fixing mongo
@@ -23,12 +25,15 @@ function Home() {
     }
     const getNCities = async () => {
       const cities = await fetchData('GET', '/memories/cities/');
+      // setCountriesList(cities);
+      setMemoryMapHTML(<MemoryMap countriesList={cities}/>) // <<<<<<<<<<<<<<<<<
       setNCities(cities.length);
     }
     const getNMemories = async () => {
       const memories = await fetchData('GET', '/memories/');
       setNMemories(memories.length);
     }
+    
     getNCountries();
     getNCities();
     getNMemories();
@@ -51,7 +56,9 @@ function Home() {
         </div>
       </div>
       <SellingPoints />
-      <hr />
+      <div className="center">
+        <div className="style-seven"></div>
+      </div>
       <div className="home-center">
         <div className="huginn-logo"> </div>
         <p className="quote">
@@ -59,7 +66,13 @@ function Home() {
           breakfast they are back again."
       </p>
       </div>
+<<<<<<< HEAD
       <MemoryMap />
+=======
+      {memoryMapHTML}
+      
+      {/* <MemoryMap countriesList={countriesList}/> */}
+>>>>>>> master
       <MyPlaces />
     </div>
   );

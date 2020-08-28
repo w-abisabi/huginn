@@ -3,10 +3,10 @@ const fetchData = async (method, path) => {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
+      Accept: 'application/json',
+    },
   });
   return data.json();
 };
 
-export default fetchData
+export default fetchData;
