@@ -4,13 +4,16 @@ By Wabi Sabi
 Huginn is your pocket book for travel memories. It lets you store pictures, stories and places you never want to forget, in a world map that tracks your travels.
 
 ## Demo
-
+<!-- blank line -->
 <figure class="video_container">
-  <iframe src="https://www.youtube.com/watch?v=XiJ80JrEO_Q&list=UU8IyLwAef44uoe2ES65pEGg" frameborder="0" allowfullscreen="true"> </iframe>
+  <iframe src="https://www.youtube.com/embed/XiJ80JrEO_Q" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+<!-- blank line -->
 
-### Discover our live demo:
 
-https://upbeat-wilson-78610f.netlify.app/
+### Discover our [Live Demo](https://upbeat-wilson-78610f.netlify.app/):
+
+
+
 
 <!-- ![Wireframes](./wireframes.png) -->
